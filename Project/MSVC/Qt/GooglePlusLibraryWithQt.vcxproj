@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E1E34122-3C0C-4D52-9649-5A2A57F10E77}</ProjectGuid>
+    <Keyword>Qt4VSv1.0</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>UNICODE;WIN32;USE_WITH_QT;QT_NO_KEYWORDS;QT_LARGEFILE_SUPPORT;QT_DLL;GOOGLEPLUSLIBRARY_NO_WARNINGS;QT_CORE_LIB;GOOGLEPLUSLIBRARY_EXPORTS;SHOW_UPGRADABLE_READLOCKED_FUNCTION;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;C:\boost_1_51_0_wchar_t-;D:\Development\GooglePlusLibrary\Include;D:\Development\GooglePlusLibrary\Src;C:\OpenSSL-Win32\include;C:\lua5_1_4_Win32_dll8_lib\include;C:\luabind_wchar_t-;D:\Development\utf8_v2_3_2\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\boost_1_51_0_wchar_t-\stage\lib;C:\lua5_1_4_Win32_dll8_lib;$(SolutionDir)$(Configuration)\;C:\luabind_wchar_t-\bin\msvc-10.0\debug\link-static\threading-multi;C:\OpenSSL-Win32\lib\VC\static;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>lua5.1.lib;ChunkedContentParserQt.lib;libeay32MDd.lib;ssleay32MDd.lib;libluabindd.lib;qtmaind.lib;QtCored4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>UNICODE;WIN32;USE_WITH_QT;QT_NO_KEYWORDS;QT_LARGEFILE_SUPPORT;QT_DLL;GOOGLEPLUSLIBRARY_NO_WARNINGS;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;GOOGLEPLUSLIBRARY_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;C:\boost_1_51_0_wchar_t-;D:\Development\GooglePlusLibrary\Include;D:\Development\GooglePlusLibrary\Src;C:\OpenSSL-Win32\include;C:\lua5_1_4_Win32_dll8_lib\include;C:\luabind_wchar_t-;D:\Development\utf8_v2_3_2\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>false</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;C:\boost_1_51_0_wchar_t-\stage\lib;C:\lua5_1_4_Win32_dll8_lib;$(SolutionDir)$(Configuration)\;C:\OpenSSL-Win32\lib\VC\static;C:\luabind_wchar_t-\bin\msvc-10.0\release\link-static\threading-multi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>lua5.1.lib;ChunkedContentParserQt.lib;libeay32MD.lib;ssleay32MD.lib;libluabind.lib;qtmain.lib;QtCore4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Src\Account\AccountList\AccountContainer.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountList\AccountList.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountList\AddedAccountList.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountList\AddedYouAccountList.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountList\BlockedAccountList.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountList\CommonWithYouAccountList.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountList\FriendSuggestionList.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountList\IgnoredAccountList.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\ContactAddress.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\Education.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\Employment.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\LabeledLink.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\LivedPlace.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\MyAccountProfile.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\RelationshipType.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\Account\Account.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\Account\AccountSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\MyAccount\Impl\MyAccountImpl.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\MyAccount\MyAccount.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\MyPageAccount.cpp" />
+    <ClCompile Include="..\..\..\Src\Account\PageAccount.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedAlbum\AttachedAlbum.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedAlbum\AttachedAlbumSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedCircle\AttachedCircle.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedCircle\AttachedCircleSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedImageVideo\AttachedImageVideo.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedImageVideo\AttachedImageVideoSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedLocation\AttachedLocation.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedLocation\AttachedLocationSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedSearchResult\AttachedSearchResult.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedSearchResult\AttachedSearchResultSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedUrl\AttachedUrl.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedUrl\AttachedUrlSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylist.cpp" />
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylistSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\Circle\Circle.cpp" />
+    <ClCompile Include="..\..\..\Src\Circle\CircleContainer.cpp" />
+    <ClCompile Include="..\..\..\Src\Circle\CircleList.cpp" />
+    <ClCompile Include="..\..\..\Src\Connection\Connection.cpp" />
+    <ClCompile Include="..\..\..\Src\Connection\Cookie\Cookie.cpp" />
+    <ClCompile Include="..\..\..\Src\Connection\Cookie\CookieContainer.cpp" />
+    <ClCompile Include="..\..\..\Src\Connection\HttpResponse.cpp" />
+    <ClCompile Include="..\..\..\Src\Connection\Talkgadget\TalkgadgetConnection.cpp" />
+    <ClCompile Include="..\..\..\Src\Connection\Uri.cpp" />
+    <ClCompile Include="..\..\..\Src\Connection\WebClient\WebClient.cpp" />
+    <ClCompile Include="..\..\..\Src\Connection\WebClient\WebClientHandler.cpp" />
+    <ClCompile Include="..\..\..\Src\Hangout\GroupChat.cpp" />
+    <ClCompile Include="..\..\..\Src\Hangout\Hangout.cpp" />
+    <ClCompile Include="..\..\..\Src\Hangout\HangoutConnection.cpp" />
+    <ClCompile Include="..\..\..\Src\Hangout\HangoutList.cpp" />
+    <ClCompile Include="..\..\..\Src\Hangout\MyHangout.cpp" />
+    <ClCompile Include="..\..\..\Src\Information\InformationContainer.cpp" />
+    <ClCompile Include="..\..\..\Src\Json\JsonMember.cpp" />
+    <ClCompile Include="..\..\..\Src\Json\JsonObject.cpp" />
+    <ClCompile Include="..\..\..\Src\Json\JsonObjectImpl.cpp" />
+    <ClCompile Include="..\..\..\Src\Json\JsonParser.cpp" />
+    <ClCompile Include="..\..\..\Src\Json\JsonPathParser.cpp" />
+    <ClCompile Include="..\..\..\Src\Notification\CircleNotificationDetail.cpp" />
+    <ClCompile Include="..\..\..\Src\Notification\MyPostNotificationDetail.cpp" />
+    <ClCompile Include="..\..\..\Src\Notification\Notification.cpp" />
+    <ClCompile Include="..\..\..\Src\Notification\NotificationDetail.cpp" />
+    <ClCompile Include="..\..\..\Src\Notification\NotificationList.cpp" />
+    <ClCompile Include="..\..\..\Src\Notification\PostNotificationDetail.cpp" />
+    <ClCompile Include="..\..\..\Src\Share\PostMessageSender.cpp" />
+    <ClCompile Include="..\..\..\Src\Share\ShareRangeList.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Comment\Comment.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Comment\CommentContainer\CommentContainer.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Comment\CommentList\CommentList.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Comment\CommentParser\CommentParser.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Comment\CommentSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\MyPost\MyPost.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\MyPost\MyPostSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\Post.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostAttachedInfo.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostContainer\PostContainer.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostImpl.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostParser\PostParser.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostParser\PostParserLua.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostSetter.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostSetterLua.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostSetterSet.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\Stream.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\StreamConnection.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\StreamConnectionImpl.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\StreamConnectionImplLua.cpp" />
+    <ClCompile Include="..\..\..\Src\Thread\ReadWriteMutex.cpp" />
+    <ClCompile Include="..\..\..\Src\Utility\Utility.cpp" />
+    <ClCompile Include="..\..\..\Src\Utility\UtilityLua.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Include\Account\AccountList\AccountList.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountList\AddedAccountList.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountList\AddedYouAccountList.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountList\BlockedAccountList.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountList\CommonWithYouAccountList.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountList\FriendSuggestionList.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountList\IgnoredAccountList.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\ContactAddress.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\Education.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\Employment.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\Gender.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\LabeledLink.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\LivedPlace.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\MyAccountProfile.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\NickNameDisplayType.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\PartnershipType.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\RelationshipType.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\Account\Account.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\MyAccount\MyAccount.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\MyPageAccount.hpp" />
+    <ClInclude Include="..\..\..\Include\Account\PageAccount.hpp" />
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedAlbum\AttachedAlbum.hpp" />
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedCircle\AttachedCircle.hpp" />
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedImageVideo\AttachedImageVideo.hpp" />
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedLocation\AttachedLocation.hpp" />
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedSearchResult\AttachedSearchResult.hpp" />
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedUrl\AttachedUrl.hpp" />
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylist.hpp" />
+    <ClInclude Include="..\..\..\Include\Circle\Circle.hpp" />
+    <ClInclude Include="..\..\..\Include\Circle\CircleList.hpp" />
+    <ClInclude Include="..\..\..\Include\GooglePlusLibrary.hpp" />
+    <ClInclude Include="..\..\..\Include\Hangout\GroupChat.hpp" />
+    <ClInclude Include="..\..\..\Include\Hangout\Hangout.hpp" />
+    <ClInclude Include="..\..\..\Include\Hangout\HangoutList.hpp" />
+    <ClInclude Include="..\..\..\Include\Hangout\MyHangout.hpp" />
+    <ClInclude Include="..\..\..\Include\Notification\CircleNotificationDetail.hpp" />
+    <ClInclude Include="..\..\..\Include\Notification\MyPostNotificationDetail.hpp" />
+    <ClInclude Include="..\..\..\Include\Notification\Notification.hpp" />
+    <ClInclude Include="..\..\..\Include\Notification\NotificationDetail.hpp" />
+    <ClInclude Include="..\..\..\Include\Notification\NotificationList.hpp" />
+    <ClInclude Include="..\..\..\Include\Notification\PostNotificationDetail.hpp" />
+    <ClInclude Include="..\..\..\Include\Share\PostMessageSender.hpp" />
+    <ClInclude Include="..\..\..\Include\Share\ShareRangeList.hpp" />
+    <ClInclude Include="..\..\..\Include\Stream\Comment\Comment.hpp" />
+    <ClInclude Include="..\..\..\Include\Stream\Comment\CommentList\CommentList.hpp" />
+    <ClInclude Include="..\..\..\Include\Stream\Post\MyPost\MyPost.hpp" />
+    <ClInclude Include="..\..\..\Include\Stream\Post\Post.hpp" />
+    <ClInclude Include="..\..\..\Include\Stream\Stream.hpp" />
+    <ClInclude Include="..\..\..\Include\Thread\ReadWriteMutex.hpp" />
+    <ClInclude Include="..\..\..\Src\Account\AccountList\AccountContainer.hpp" />
+    <ClInclude Include="..\..\..\Src\Account\Account\AccountBase.hpp" />
+    <ClInclude Include="..\..\..\Src\Account\Account\AccountSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\Account\MyAccount\Impl\MyAccountImpl.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedAlbum\AttachedAlbumBase.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedAlbum\AttachedAlbumSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedCircle\AttachedCircleBase.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedCircle\AttachedCircleSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedImageVideo\AttachedImageVideoBase.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedImageVideo\AttachedImageVideoSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedLocation\AttachedLocationBase.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedLocation\AttachedLocationSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedSearchResult\AttachedSearchResultBase.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedSearchResult\AttachedSearchResultSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedUrl\AttachedUrlBase.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedUrl\AttachedUrlSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylistBase.hpp" />
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylistSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\Circle\CircleContainer.hpp" />
+    <ClInclude Include="..\..\..\Src\Connection\Connection.hpp" />
+    <ClInclude Include="..\..\..\Src\Connection\Cookie\Cookie.hpp" />
+    <ClInclude Include="..\..\..\Src\Connection\Cookie\CookieContainer.hpp" />
+    <ClInclude Include="..\..\..\Src\Connection\HttpResponse.hpp" />
+    <ClInclude Include="..\..\..\Src\Connection\Talkgadget\TalkgadgetConnection.hpp" />
+    <ClInclude Include="..\..\..\Src\Connection\Uri.hpp" />
+    <ClInclude Include="..\..\..\Src\Connection\WebClient\WebClient.hpp" />
+    <ClInclude Include="..\..\..\Src\Hangout\HangoutConnection.hpp" />
+    <ClInclude Include="..\..\..\Src\Information\InformationContainer.hpp" />
+    <ClInclude Include="..\..\..\Src\Json\JsonGrammar.hpp" />
+    <ClInclude Include="..\..\..\Src\Json\JsonMember.hpp" />
+    <ClInclude Include="..\..\..\Src\Json\JsonObject.hpp" />
+    <ClInclude Include="..\..\..\Src\Json\JsonObjectImpl.hpp" />
+    <ClInclude Include="..\..\..\Src\Json\JsonParser.hpp" />
+    <ClInclude Include="..\..\..\Src\Json\JsonPathParser.hpp" />
+    <ClInclude Include="..\..\..\Src\Json\RangeException.hpp" />
+    <ClInclude Include="..\..\..\Src\Json\TypeException.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Comment\CommentBase.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Comment\CommentContainer\CommentContainer.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Comment\CommentParser\CommentParser.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Comment\CommentSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Post\MyPost\MyPostBase.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Post\MyPost\MyPostSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Post\PostContainer\PostContainer.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Post\PostImpl.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Post\PostParser\PostParser.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\Post\PostSetter.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\StreamConnection.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\StreamConnectionImpl.hpp" />
+    <ClInclude Include="..\..\..\Src\Utility\LuaData.hpp" />
+    <ClInclude Include="..\..\..\Src\Utility\LuaScript.hpp" />
+    <ClInclude Include="..\..\..\Src\Utility\Utility.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\Include\LuaScript\Constant.lua" />
+    <None Include="..\..\..\Include\LuaScript\CreateAttachedCircle.lua" />
+    <None Include="..\..\..\Include\LuaScript\CreateAttachedUrl.lua" />
+    <None Include="..\..\..\Include\LuaScript\CreateHangout.lua" />
+    <None Include="..\..\..\Include\LuaScript\HangoutLoopUpdate.lua" />
+    <None Include="..\..\..\Include\LuaScript\Login.lua" />
+    <None Include="..\..\..\Include\LuaScript\ParseAttachedLocation.lua" />
+    <None Include="..\..\..\Include\LuaScript\ParseAttachedSearchResult.lua" />
+    <None Include="..\..\..\Include\LuaScript\ParseAttachedUrl.lua" />
+    <None Include="..\..\..\Include\LuaScript\ParseComment.lua" />
+    <None Include="..\..\..\Include\LuaScript\ParsePost.lua" />
+    <None Include="..\..\..\Include\LuaScript\Profile\SaveProfile.lua" />
+    <None Include="..\..\..\Include\LuaScript\StreamInitialize.lua" />
+    <None Include="..\..\..\Include\LuaScript\StreamLoopUpdate.lua" />
+    <None Include="..\..\..\Include\LuaScript\StreamUpdate.lua" />
+    <None Include="..\..\..\Include\LuaScript\TalkgadgetConnect.lua" />
+    <None Include="..\..\..\Include\LuaScript\UpdateAddedAccountList.lua" />
+    <None Include="..\..\..\Include\LuaScript\UpdateAddedYouAccountList.lua" />
+    <None Include="..\..\..\Include\LuaScript\UpdateIgnoredAccountList.lua" />
+    <None Include="..\..\..\Include\LuaScript\UpdateNotificationList.lua" />
+    <None Include="..\..\..\Include\LuaScript\Utility.lua" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties UicDir=".\GeneratedFiles" MocDir=".\GeneratedFiles\$(ConfigurationName)" MocOptions="" RccDir=".\GeneratedFiles" lupdateOnBuild="0" lupdateOptions="" lreleaseOptions="" QtVersion_x0020_Win32="4.8.2" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

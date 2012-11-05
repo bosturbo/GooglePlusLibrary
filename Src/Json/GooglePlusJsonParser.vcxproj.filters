@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="JsonGrammar.hpp" />
+    <ClInclude Include="JsonMember.hpp" />
+    <ClInclude Include="JsonObject.hpp" />
+    <ClInclude Include="JsonObjectImpl.hpp" />
+    <ClInclude Include="JsonParser.hpp" />
+    <ClInclude Include="JsonPathParser.hpp" />
+    <ClInclude Include="RangeException.hpp" />
+    <ClInclude Include="TypeException.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="JsonMember.cpp" />
+    <ClCompile Include="JsonObject.cpp" />
+    <ClCompile Include="JsonObjectImpl.cpp" />
+    <ClCompile Include="JsonParser.cpp" />
+    <ClCompile Include="JsonPathParser.cpp" />
+  </ItemGroup>
+</Project>

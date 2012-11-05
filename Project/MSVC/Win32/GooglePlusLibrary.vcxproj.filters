@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Src\Account\Account\Account.cpp">
+      <Filter>Account\Account</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\Account\AccountSetter.cpp">
+      <Filter>Account\Account</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountList\AccountContainer.cpp">
+      <Filter>Account\AccountList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountList\AccountList.cpp">
+      <Filter>Account\AccountList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountList\AddedAccountList.cpp">
+      <Filter>Account\AccountList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountList\AddedYouAccountList.cpp">
+      <Filter>Account\AccountList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountList\BlockedAccountList.cpp">
+      <Filter>Account\AccountList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountList\CommonWithYouAccountList.cpp">
+      <Filter>Account\AccountList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountList\FriendSuggestionList.cpp">
+      <Filter>Account\AccountList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountList\IgnoredAccountList.cpp">
+      <Filter>Account\AccountList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\ContactAddress.cpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\Education.cpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\Employment.cpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\LabeledLink.cpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\LivedPlace.cpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\MyAccountProfile.cpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\AccountProfile\RelationshipType.cpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\MyAccount\MyAccount.cpp">
+      <Filter>Account\MyAccount</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\MyAccount\Impl\MyAccountImpl.cpp">
+      <Filter>Account\MyAccount\Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\MyPageAccount.cpp">
+      <Filter>Account</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Account\PageAccount.cpp">
+      <Filter>Account</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedAlbum\AttachedAlbum.cpp">
+      <Filter>AttachedInfo\AttachedAlbum</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedAlbum\AttachedAlbumSetter.cpp">
+      <Filter>AttachedInfo\AttachedAlbum</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedCircle\AttachedCircle.cpp">
+      <Filter>AttachedInfo\AttachedCircle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedCircle\AttachedCircleSetter.cpp">
+      <Filter>AttachedInfo\AttachedCircle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedImageVideo\AttachedImageVideo.cpp">
+      <Filter>AttachedInfo\AttachedImageVideo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedImageVideo\AttachedImageVideoSetter.cpp">
+      <Filter>AttachedInfo\AttachedImageVideo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedLocation\AttachedLocation.cpp">
+      <Filter>AttachedInfo\AttachedLocation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedLocation\AttachedLocationSetter.cpp">
+      <Filter>AttachedInfo\AttachedLocation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedSearchResult\AttachedSearchResult.cpp">
+      <Filter>AttachedInfo\AttachedSearchResult</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedSearchResult\AttachedSearchResultSetter.cpp">
+      <Filter>AttachedInfo\AttachedSearchResult</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedUrl\AttachedUrl.cpp">
+      <Filter>AttachedInfo\AttachedUrl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedUrl\AttachedUrlSetter.cpp">
+      <Filter>AttachedInfo\AttachedUrl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylist.cpp">
+      <Filter>AttachedInfo\AttachedYouTubePlaylist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylistSetter.cpp">
+      <Filter>AttachedInfo\AttachedYouTubePlaylist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Circle\Circle.cpp">
+      <Filter>Circle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Circle\CircleContainer.cpp">
+      <Filter>Circle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Circle\CircleList.cpp">
+      <Filter>Circle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\Connection.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\HttpResponse.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\Uri.cpp">
+      <Filter>Connection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\WebClient\WebClient.cpp">
+      <Filter>Connection\WebClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\WebClient\WebClientHandler.cpp">
+      <Filter>Connection\WebClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\Talkgadget\TalkgadgetConnection.cpp">
+      <Filter>Connection\Talkgadget</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\Cookie\Cookie.cpp">
+      <Filter>Connection\Cookie</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\Cookie\CookieContainer.cpp">
+      <Filter>Connection\Cookie</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Hangout\GroupChat.cpp">
+      <Filter>Hangout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Hangout\Hangout.cpp">
+      <Filter>Hangout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Hangout\HangoutConnection.cpp">
+      <Filter>Hangout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Hangout\HangoutList.cpp">
+      <Filter>Hangout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Hangout\MyHangout.cpp">
+      <Filter>Hangout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Information\InformationContainer.cpp">
+      <Filter>Information</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Notification\CircleNotificationDetail.cpp">
+      <Filter>Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Notification\MyPostNotificationDetail.cpp">
+      <Filter>Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Notification\Notification.cpp">
+      <Filter>Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Notification\NotificationDetail.cpp">
+      <Filter>Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Notification\NotificationList.cpp">
+      <Filter>Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Notification\PostNotificationDetail.cpp">
+      <Filter>Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Share\PostMessageSender.cpp">
+      <Filter>Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Share\ShareRangeList.cpp">
+      <Filter>Share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Stream.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\StreamConnection.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\StreamConnectionImpl.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Comment\Comment.cpp">
+      <Filter>Stream\Comment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Comment\CommentSetter.cpp">
+      <Filter>Stream\Comment</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Comment\CommentContainer\CommentContainer.cpp">
+      <Filter>Stream\Comment\CommentContainer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Comment\CommentList\CommentList.cpp">
+      <Filter>Stream\Comment\CommentList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Comment\CommentParser\CommentParser.cpp">
+      <Filter>Stream\Comment\CommentParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\Post.cpp">
+      <Filter>Stream\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostImpl.cpp">
+      <Filter>Stream\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostSetter.cpp">
+      <Filter>Stream\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\MyPost\MyPost.cpp">
+      <Filter>Stream\Post\MyPost</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\MyPost\MyPostSetter.cpp">
+      <Filter>Stream\Post\MyPost</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostContainer\PostContainer.cpp">
+      <Filter>Stream\Post\PostContainer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostParser\PostParser.cpp">
+      <Filter>Stream\Post\PostParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Thread\ReadWriteMutex.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Utility\Utility.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostParser\PostParserLua.cpp">
+      <Filter>Stream\Post\PostParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostAttachedInfo.cpp">
+      <Filter>Stream\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostSetterSet.cpp">
+      <Filter>Stream\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\Post\PostSetterLua.cpp">
+      <Filter>Stream\Post</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\StreamConnectionImplLua.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Utility\UtilityLua.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\Cookie\CookieList.cpp">
+      <Filter>Connection\Cookie</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\StreamImpl.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Connection\WebClient\WebClientCppNetlib.cpp">
+      <Filter>Connection\WebClient</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Utility\UtilityImpl.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Utility\UtilityLuaImpl.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Account">
+      <UniqueIdentifier>{24398a86-445b-4183-98c9-22dc80c07d60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connection">
+      <UniqueIdentifier>{4b502393-dabd-4917-af8b-8b924b4fb82f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connection\WebClient">
+      <UniqueIdentifier>{360a24d1-5cc0-40fe-a500-e2c74e4b11a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connection\Cookie">
+      <UniqueIdentifier>{f564782d-89c1-46df-b3cb-4fc0a5161ada}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{43a3aa55-eb70-44e2-8c49-1229dfa902f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{96fa90bf-38b6-4ff9-b71b-fdc9b9a3a328}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Connection\Talkgadget">
+      <UniqueIdentifier>{99862c69-388d-443d-aa46-f58bf689a463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Information">
+      <UniqueIdentifier>{dea0e862-60df-4185-9309-c8411b363c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream">
+      <UniqueIdentifier>{a7a5b819-9137-43c6-a2a3-a029f4036e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AttachedInfo">
+      <UniqueIdentifier>{971224be-0398-4d55-ba7f-9f4d9a2a77e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Circle">
+      <UniqueIdentifier>{4cb7138e-7a13-486e-bac6-bdaea30870ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Account\AccountList">
+      <UniqueIdentifier>{af78b9f1-21f1-46c2-959e-d5ff12365181}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream\Comment">
+      <UniqueIdentifier>{432b39a8-532a-46c4-8d4f-de8fee6c368c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Account\AccountProfile">
+      <UniqueIdentifier>{419e090b-fa79-4a1f-b59b-fad068f14526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Share">
+      <UniqueIdentifier>{b2a8ac1c-5d89-49b0-abc4-6fe1bce26757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream\Post">
+      <UniqueIdentifier>{80ab90a4-344b-4ff0-a10b-7c48396698ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Notification">
+      <UniqueIdentifier>{93a3e47a-eb6d-4b45-a927-63090d0d6c44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hangout">
+      <UniqueIdentifier>{e2e5e723-57f3-4331-8585-abf57e9fbef4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LuaScript">
+      <UniqueIdentifier>{6a17db14-e3e1-40f9-8db4-dba5c336770c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LuaScript\Profile">
+      <UniqueIdentifier>{ae42b1f7-034c-4bc1-a3a4-db1522747dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Account\MyAccount">
+      <UniqueIdentifier>{6e168192-3d6d-49c7-97d4-4f81fa078c84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Account\MyAccount\Impl">
+      <UniqueIdentifier>{f91f1258-fee3-4d5e-baf1-9c1f8482fee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Account\Account">
+      <UniqueIdentifier>{73b6fdc0-8500-47cf-a307-4a081cb8307c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream\Post\MyPost">
+      <UniqueIdentifier>{9cd538e9-5d0a-4c92-b178-cf6ef0b548e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream\Post\PostParser">
+      <UniqueIdentifier>{3d176d35-90b2-4534-bb88-d8a0889087d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream\Post\PostContainer">
+      <UniqueIdentifier>{2aa9e879-93c7-4314-96bc-191168315d9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream\Comment\CommentContainer">
+      <UniqueIdentifier>{46a70a20-dec4-4eb1-89f4-004ac711a84b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream\Comment\CommentList">
+      <UniqueIdentifier>{5698e785-7d23-442b-b76a-151e6736bff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Stream\Comment\CommentParser">
+      <UniqueIdentifier>{86123818-d8fd-440d-86db-9886d553f01f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AttachedInfo\AttachedAlbum">
+      <UniqueIdentifier>{9d390470-689e-490b-8148-2b29708efb0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AttachedInfo\AttachedCircle">
+      <UniqueIdentifier>{2363e211-eb30-43cc-bdd7-7e3c177c0a4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AttachedInfo\AttachedImageVideo">
+      <UniqueIdentifier>{bb92acd9-4565-41f6-954e-98bc66f21911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AttachedInfo\AttachedLocation">
+      <UniqueIdentifier>{0df6e70c-ef6a-4d6f-b258-1d9312f32492}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AttachedInfo\AttachedSearchResult">
+      <UniqueIdentifier>{9c458e72-54a5-48e2-a18d-4fcf7e38bc7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AttachedInfo\AttachedUrl">
+      <UniqueIdentifier>{aca0a8d2-2d80-4f84-8e48-c4a328d7ae4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AttachedInfo\AttachedYouTubePlaylist">
+      <UniqueIdentifier>{027ea0d9-2f62-4c4b-9c6f-9b88e2684091}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Include\Account\Account\Account.hpp">
+      <Filter>Account\Account</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Account\Account\AccountBase.hpp">
+      <Filter>Account\Account</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Account\Account\AccountSetter.hpp">
+      <Filter>Account\Account</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Account\AccountList\AccountContainer.hpp">
+      <Filter>Account\AccountList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountList\AccountList.hpp">
+      <Filter>Account\AccountList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountList\AddedAccountList.hpp">
+      <Filter>Account\AccountList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountList\AddedYouAccountList.hpp">
+      <Filter>Account\AccountList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountList\BlockedAccountList.hpp">
+      <Filter>Account\AccountList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountList\CommonWithYouAccountList.hpp">
+      <Filter>Account\AccountList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountList\FriendSuggestionList.hpp">
+      <Filter>Account\AccountList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountList\IgnoredAccountList.hpp">
+      <Filter>Account\AccountList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\ContactAddress.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\Education.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\Employment.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\Gender.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\LabeledLink.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\LivedPlace.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\MyAccountProfile.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\NickNameDisplayType.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\PartnershipType.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\AccountProfile\RelationshipType.hpp">
+      <Filter>Account\AccountProfile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\MyAccount\MyAccount.hpp">
+      <Filter>Account\MyAccount</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Account\MyAccount\Impl\MyAccountImpl.hpp">
+      <Filter>Account\MyAccount\Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\MyPageAccount.hpp">
+      <Filter>Account</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Account\PageAccount.hpp">
+      <Filter>Account</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedAlbum\AttachedAlbum.hpp">
+      <Filter>AttachedInfo\AttachedAlbum</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedCircle\AttachedCircle.hpp">
+      <Filter>AttachedInfo\AttachedCircle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedImageVideo\AttachedImageVideo.hpp">
+      <Filter>AttachedInfo\AttachedImageVideo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedLocation\AttachedLocation.hpp">
+      <Filter>AttachedInfo\AttachedLocation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedSearchResult\AttachedSearchResult.hpp">
+      <Filter>AttachedInfo\AttachedSearchResult</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedUrl\AttachedUrl.hpp">
+      <Filter>AttachedInfo\AttachedUrl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylist.hpp">
+      <Filter>AttachedInfo\AttachedYouTubePlaylist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedAlbum\AttachedAlbumBase.hpp">
+      <Filter>AttachedInfo\AttachedAlbum</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedAlbum\AttachedAlbumSetter.hpp">
+      <Filter>AttachedInfo\AttachedAlbum</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedCircle\AttachedCircleBase.hpp">
+      <Filter>AttachedInfo\AttachedCircle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedCircle\AttachedCircleSetter.hpp">
+      <Filter>AttachedInfo\AttachedCircle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedImageVideo\AttachedImageVideoBase.hpp">
+      <Filter>AttachedInfo\AttachedImageVideo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedImageVideo\AttachedImageVideoSetter.hpp">
+      <Filter>AttachedInfo\AttachedImageVideo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedLocation\AttachedLocationBase.hpp">
+      <Filter>AttachedInfo\AttachedLocation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedLocation\AttachedLocationSetter.hpp">
+      <Filter>AttachedInfo\AttachedLocation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedSearchResult\AttachedSearchResultBase.hpp">
+      <Filter>AttachedInfo\AttachedSearchResult</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedSearchResult\AttachedSearchResultSetter.hpp">
+      <Filter>AttachedInfo\AttachedSearchResult</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedUrl\AttachedUrlBase.hpp">
+      <Filter>AttachedInfo\AttachedUrl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedUrl\AttachedUrlSetter.hpp">
+      <Filter>AttachedInfo\AttachedUrl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylistBase.hpp">
+      <Filter>AttachedInfo\AttachedYouTubePlaylist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\AttachedInfo\AttachedYouTubePlaylist\AttachedYouTubePlaylistSetter.hpp">
+      <Filter>AttachedInfo\AttachedYouTubePlaylist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Circle\CircleContainer.hpp">
+      <Filter>Circle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Circle\Circle.hpp">
+      <Filter>Circle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Circle\CircleList.hpp">
+      <Filter>Circle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Connection\Connection.hpp">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Connection\HttpResponse.hpp">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Connection\Uri.hpp">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Connection\WebClient\WebClient.hpp">
+      <Filter>Connection\WebClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Connection\Talkgadget\TalkgadgetConnection.hpp">
+      <Filter>Connection\Talkgadget</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Connection\Cookie\Cookie.hpp">
+      <Filter>Connection\Cookie</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Connection\Cookie\CookieContainer.hpp">
+      <Filter>Connection\Cookie</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Hangout\HangoutConnection.hpp">
+      <Filter>Hangout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Hangout\GroupChat.hpp">
+      <Filter>Hangout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Hangout\Hangout.hpp">
+      <Filter>Hangout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Hangout\HangoutList.hpp">
+      <Filter>Hangout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Hangout\MyHangout.hpp">
+      <Filter>Hangout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Information\InformationContainer.hpp">
+      <Filter>Information</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Notification\CircleNotificationDetail.hpp">
+      <Filter>Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Notification\MyPostNotificationDetail.hpp">
+      <Filter>Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Notification\Notification.hpp">
+      <Filter>Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Notification\NotificationDetail.hpp">
+      <Filter>Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Notification\NotificationList.hpp">
+      <Filter>Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Notification\PostNotificationDetail.hpp">
+      <Filter>Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Share\PostMessageSender.hpp">
+      <Filter>Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Share\ShareRangeList.hpp">
+      <Filter>Share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Stream\Stream.hpp">
+      <Filter>Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\StreamConnection.hpp">
+      <Filter>Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\StreamConnectionImpl.hpp">
+      <Filter>Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Comment\CommentBase.hpp">
+      <Filter>Stream\Comment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Comment\CommentSetter.hpp">
+      <Filter>Stream\Comment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Stream\Comment\Comment.hpp">
+      <Filter>Stream\Comment</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Comment\CommentContainer\CommentContainer.hpp">
+      <Filter>Stream\Comment\CommentContainer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Stream\Comment\CommentList\CommentList.hpp">
+      <Filter>Stream\Comment\CommentList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Comment\CommentParser\CommentParser.hpp">
+      <Filter>Stream\Comment\CommentParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Post\PostImpl.hpp">
+      <Filter>Stream\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Post\PostSetter.hpp">
+      <Filter>Stream\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Stream\Post\Post.hpp">
+      <Filter>Stream\Post</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Stream\Post\MyPost\MyPost.hpp">
+      <Filter>Stream\Post\MyPost</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Post\MyPost\MyPostBase.hpp">
+      <Filter>Stream\Post\MyPost</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Post\MyPost\MyPostSetter.hpp">
+      <Filter>Stream\Post\MyPost</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Post\PostContainer\PostContainer.hpp">
+      <Filter>Stream\Post\PostContainer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\Post\PostParser\PostParser.hpp">
+      <Filter>Stream\Post\PostParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Utility\LuaData.hpp">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Utility\LuaScript.hpp">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Utility\Utility.hpp">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\GooglePlusLibrary.hpp" />
+    <ClInclude Include="..\..\..\Include\Thread\ReadWriteMutex.hpp">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Connection\Cookie\CookieList.hpp">
+      <Filter>Connection\Cookie</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Include\Stream\StreamImpl.hpp">
+      <Filter>Stream</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Connection\WebClient\WebClientCppNetlib.hpp">
+      <Filter>Connection\WebClient</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Utility\UtilityImpl.hpp">
+      <Filter>Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\LuaScript\Constant.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\CreateAttachedCircle.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\CreateAttachedUrl.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\CreateHangout.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\HangoutLoopUpdate.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\Login.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\ParseAttachedLocation.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\ParseAttachedSearchResult.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\ParseAttachedUrl.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\ParseComment.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\ParsePost.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\StreamInitialize.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\StreamLoopUpdate.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\StreamUpdate.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\TalkgadgetConnect.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\UpdateAddedAccountList.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\UpdateAddedYouAccountList.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\UpdateIgnoredAccountList.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\UpdateNotificationList.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\Utility.lua">
+      <Filter>LuaScript</Filter>
+    </None>
+    <None Include="..\..\..\LuaScript\Profile\SaveProfile.lua">
+      <Filter>LuaScript\Profile</Filter>
+    </None>
+  </ItemGroup>
+</Project>
