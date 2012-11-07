@@ -44,6 +44,9 @@ Lua (MIT license)
 Luabind (MIT License)  
 (http://www.rasterbar.com/products/luabind.html) 
 
+UTF-8 CPP (調査中)  
+(http://sourceforge.net/projects/utfcpp/) 
+
 最初の一歩(Get Started)
 --------
 ```cpp
