@@ -1,7 +1,8 @@
+#include <string>
+#include <fstream>
 #include <Connection/Connection.hpp>
 #include <Connection/HttpResponse.hpp>
 #include <Connection/WebClient/WebClient.hpp>
-#include <Connection/WebClient/WebClientCppNetlib.hpp>
 #include <Connection/Cookie/CookieContainer.hpp>
 #include <Connection/Cookie/Cookie.hpp>
 #include <Utility/Utility.hpp>
@@ -190,6 +191,7 @@ JsonObject Connection::convertResponseToJson(const string& response)
 		cout << "Invalid UTF-8 encoding detected\n";
 		//cout << "This part is fine: " << string(response.cbegin(), end_it) << "\n";
 
+#ifdef LOGGING
 		static int count = 1;
 		wstringstream string_stream;
 		string_stream << "InvalidUTF-8Response";
@@ -200,6 +202,7 @@ JsonObject Connection::convertResponseToJson(const string& response)
 		fwprintf(response_file, Utility::convertUTF8ToUnicode(string(response.cbegin(), end_it)).c_str());
 		fclose(response_file);
 		++count;
+#endif
 	}
 
 	JsonParser parser;

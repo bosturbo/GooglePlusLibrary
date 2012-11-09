@@ -208,13 +208,13 @@ wstring JsonObject::getTypeAsWString() const
 	assert(impl_);
 	switch(impl_->type_)
 	{
-	case ObjectType::Null: return L"Null";
-	case ObjectType::Int: return L"Int";
-	case ObjectType::Real: return L"Real";
-	case ObjectType::Bool: return L"Bool";
-	case ObjectType::Array: return L"Array";
-	case ObjectType::Object: return L"Object";
-	case ObjectType::String: return L"String";
+	case JsonObjectImpl::ObjectImplType::Null: return L"Null";
+	case JsonObjectImpl::ObjectImplType::Int: return L"Int";
+	case JsonObjectImpl::ObjectImplType::Real: return L"Real";
+	case JsonObjectImpl::ObjectImplType::Bool: return L"Bool";
+	case JsonObjectImpl::ObjectImplType::Array: return L"Array";
+	case JsonObjectImpl::ObjectImplType::Object: return L"Object";
+	case JsonObjectImpl::ObjectImplType::String: return L"String";
 	}
 	return L"Unknown";
 }

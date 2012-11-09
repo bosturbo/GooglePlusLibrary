@@ -33,7 +33,7 @@ method_("GET"),
 response_body_(""),
 url_(url),
 path_(""),
-request_stream_(),
+request_(),
 response_(),
 content_(""),
 content_type_(""),
@@ -363,7 +363,7 @@ void WebClient::setTimeOut(boost::posix_time::seconds time)
 
 void WebClient::sendRequest()
 {
-	request_stream_ = setRequestStream();
+	request_ = setRequestStream();
 	io_service_.run();
 }
 

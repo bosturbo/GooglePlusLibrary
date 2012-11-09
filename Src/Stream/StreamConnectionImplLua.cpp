@@ -83,7 +83,6 @@ void StreamConnectionImpl::update(const wstring& account_id)
 		PostParser::bindToScript(lua_state);
 		CommentParser::bindToScript(lua_state);
 		JsonObject::bindToScript(lua_state);
-		bindToScript(lua_state);
 	});
 
 	while(!is_cancellation_pending_)

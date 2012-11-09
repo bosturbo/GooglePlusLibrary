@@ -13,7 +13,6 @@ namespace GooglePlusLibrary
 
 using namespace std;
 using namespace ::luabind;
-namespace http = boost::network::http;
 
 HttpResponse::HttpResponse()
 :url_(""),
@@ -53,61 +52,6 @@ response_cookie_(response_cookie)
 		//response_header_.insert(map<string, string>::value_type(it->first, it->second));
 		++it;
 	}
-}
-
-HttpResponse::HttpResponse(const string& url, const http::client::response& response)
-:url_(url),
-status_code_(status(response)),
-response_body_(body(response)), 
-response_header_(), 
-response_cookie_(),
-redirect_url_("")
-{
-	cout << "Get or Post End" << endl;
-
-	auto it = headers(response).begin();
-	while(it != headers(response).end())
-	{
-		if(it->first == "Set-Cookie")
-		{
-			Cookie cookie(url_, it->second);
-			response_cookie_.push_back(cookie);
-		}
-		else
-		{
-			if(it->first == "Location")
-			{
-				redirect_url_ = it->second;
-
-				string scheme = redirect_url_.substr(0, 4);
-				if(scheme != "http")
-				{
-					boost::network::uri::uri uri(url);
-					string target = uri.scheme() + "://" + uri.host();
-					redirect_url_ = target + redirect_url_;
-				}
-			}
-			response_header_.insert(map<string, string>::value_type(it->first, it->second));
-		}
-		++it;
-	}
-
-	//cout << "response:" << response_body_ << endl;
-	/*
-	if((getStatusCode() == 200) && (getResponseHeaderValue("Transfer-Encoding") == "chunked"))
-	{
-		ChunkedContentParser parser;
-		bool result = parser.parse(response_body_);
-		if(result)
-		{
-			response_body_ = parser.getResult();
-		}
-		else
-		{
-			cout << "Parse Failed" << endl;
-		}
-	}
-	*/
 }
 
 string HttpResponse::getUrl() const

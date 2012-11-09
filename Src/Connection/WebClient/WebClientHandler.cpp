@@ -96,7 +96,7 @@ void WebClient::handleConnect(const boost_error_code& error, tcp::resolver::iter
 	}
 }
 
-stringstream WebClient::setRequestStream()
+string WebClient::setRequestStream()
 {
 	stringstream request_stream;
 
@@ -146,7 +146,7 @@ stringstream WebClient::setRequestStream()
 	{
 		request_stream << content_;
 	}
-	return request_stream;
+	return request_stream.str();
 }
 
 void WebClient::handleHandshake(const boost_error_code& error)
@@ -165,7 +165,7 @@ void WebClient::startWrite()
 	}
 
 	boost::asio::async_write(socket_, 
-		boost::asio::buffer(request_stream_.str().c_str(), strlen(request_stream_.str().c_str())), 
+		boost::asio::buffer(request_.c_str(), strlen(request_.c_str())), 
 		boost::bind(&WebClient::handleWrite, this, boost::asio::placeholders::error));		
 }
 

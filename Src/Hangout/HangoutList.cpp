@@ -3,7 +3,6 @@
 #include <Utility/Utility.hpp>
 #include <Connection/Connection.hpp>
 #include <Connection/Cookie/Cookie.hpp>
-#include <Connection/HttpResponse.hpp>
 #include <Information/InformationContainer.hpp>
 #include <Hangout/HangoutConnection.hpp>
 #include <Json/JsonObject.hpp>

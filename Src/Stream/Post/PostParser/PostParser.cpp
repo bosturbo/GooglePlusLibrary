@@ -1,5 +1,6 @@
 #include <Stream/Post/PostParser/PostParser.hpp>
 #include <Stream/Post/PostContainer/PostContainer.hpp>
+#include <Json/JsonObject.hpp>
 #include <Utility/Utility.hpp>
 #include <Utility/LuaScript.hpp>
 

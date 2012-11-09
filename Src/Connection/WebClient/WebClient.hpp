@@ -18,8 +18,10 @@
 #endif
 
 //#define BOOST_ASIO_ENABLE_HANDLER_TRACKING
-
+#include <sstream>
+#include <fstream>
 #include <string>
+#include <list>
 #include <map>
 
 #include <boost/asio.hpp>
@@ -42,6 +44,7 @@ class HttpResponse;
 class GOOGLEPLUSLIBRARY_API WebClient
 {
 public:
+	WebClient() = default;
 	WebClient(const std::string& url);
 
 	void setCurrentMailAddress(const std::string& mail_address);
@@ -109,7 +112,7 @@ public:
 
 protected:
 
-	std::stringstream setRequestStream();
+	std::string setRequestStream();
 	
 	void checkDeadLine();
 
@@ -159,7 +162,7 @@ private:
 	std::string response_body_;
 	std::string url_;
 	std::string path_;
-	std::stringstream request_stream_;
+	std::string request_;
 
 	//size_t content_length_;
 	std::string content_;
