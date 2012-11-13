@@ -74,7 +74,7 @@ void StreamConnectionImpl::initializeAsyncThreadMethod(const wstring& account_id
 
 void StreamConnectionImpl::update(const wstring& account_id)
 {
-	LuaScript<bool(string)> lua_script("LuaScript/StreamLoopUpdate.lua", "streamLoopUpdate", [](lua_State* lua_state)
+	LuaScript<bool(string)> lua_script("LuaScript/StreamLoopUpdate.lua", "streamLoopUpdate", [this](lua_State* lua_state)
 	{
 		Connection::bindToScript(lua_state);
 		HttpResponse::bindToScript(lua_state);
@@ -83,6 +83,7 @@ void StreamConnectionImpl::update(const wstring& account_id)
 		PostParser::bindToScript(lua_state);
 		CommentParser::bindToScript(lua_state);
 		JsonObject::bindToScript(lua_state);
+		bindToScript(lua_state);
 	});
 
 	while(!is_cancellation_pending_)
