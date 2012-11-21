@@ -137,14 +137,8 @@ protected:
 	void handleReadContent(const boost_error_code& error, size_t bytes_transferred);
 
 	void startReadChunkedContent();
-
 	void handleReadChunkSize(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadChunkSize2(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadEndSize(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadEndLine(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadChunkedContent(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadChunkedContent2(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadChunkedContent3(const boost_error_code& error, size_t bytes_transferred);
+	void handleReadChunkData(const boost_error_code& error, size_t bytes_transferred);
 private:
 	std::shared_ptr<boost::asio::io_service> io_service_ptr_;
 	boost::asio::io_service& io_service_;
