@@ -85,8 +85,6 @@ status_code_(0)
 		boost::bind(&WebClient::handleResolve, this, 
 		boost::asio::placeholders::error, 
 		boost::asio::placeholders::iterator));
-	
-	connect_timer_.async_wait(boost::bind(&WebClient::checkDeadLine, this));
 }
 
 void WebClient::setCurrentMailAddress(const string& mail_address)

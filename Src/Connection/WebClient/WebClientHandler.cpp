@@ -4,9 +4,6 @@
 
 #include <boost/bind.hpp>
 #include <boost/algorithm/string/trim.hpp>
-#include <boost/spirit/include/qi.hpp>
-#include <boost/spirit/include/phoenix.hpp>
-#include <boost/regex.hpp>
 #include <boost/lexical_cast.hpp>
 
 #include <iostream>
@@ -20,8 +17,6 @@ namespace GooglePlusLibrary
 using namespace std;
 using namespace boost::asio::ssl;
 using namespace boost::asio::ip;
-namespace qi = boost::spirit::qi;
-namespace phoenix = boost::phoenix;
 
 void WebClient::handleConnectTimeout(const boost_error_code& error)
 {
@@ -42,7 +37,6 @@ void WebClient::handleResolve(const boost_error_code& error, asio_resolver::iter
 		return;
 	}
 	startConnect(endpoint_iterator);
-	connect_timer_.async_wait(boost::bind(&WebClient::checkDeadLine, this));
 }
 
 void WebClient::startConnect(tcp::resolver::iterator endpoint_iterator)
@@ -183,8 +177,6 @@ void WebClient::handleWrite(const boost_error_code& error)
 		cancelConnect();
 		return;
 	}
-	heartbeat_timer_.expires_from_now(boost::posix_time::seconds(10));
-	heartbeat_timer_.async_wait(boost::bind(&WebClient::startWrite, this));
 }
 
 void WebClient::handleReadStatusLine(const boost_error_code& error)
@@ -276,7 +268,7 @@ void WebClient::handleReadHeaders(const boost_error_code& error)
 		{
 			size_t size = boost::lexical_cast<size_t>(length);
 			boost::asio::async_read(socket_, response_,
-				boost::asio::transfer_exactly(size),
+				boost::asio::transfer_exactly(size - response_.size()),
 				boost::bind(&WebClient::handleReadContent, this,
 					boost::asio::placeholders::error,
 					boost::asio::placeholders::bytes_transferred)
@@ -295,10 +287,6 @@ void WebClient::handleReadHeaders(const boost_error_code& error)
 
 void WebClient::startReadChunkedContent()
 {
-	//cout << "LoadHandleReadChunkSize" << endl;
-
-	connect_timer_.expires_from_now(boost::posix_time::seconds(30));
-	
 	boost::asio::async_read_until(socket_, response_, "\r\n",
 		boost::bind(&WebClient::handleReadChunkSize, this,
 		boost::asio::placeholders::error,
@@ -306,11 +294,10 @@ void WebClient::startReadChunkedContent()
 
 }
 
-#define NO_DEBUG_WITH_HEXDUMP
 #if defined DEBUG_WITH_HEXDUMP
 static void hexdump(const char *buf, size_t len)
 {
-        //            xxxxxxx aa aa aa aa aa aa aa aa:aa aa aa aa aa aa aa aa aaaaaaaaaaaaaaaa
+        //             xxxxxxx aa aa aa aa aa aa aa aa:aa aa aa aa aa aa aa aa aaaaaaaaaaaaaaaa
         char line[] = "                               :                                        ";
         static const char hc[] = "0123456789abcdef";
         for (size_t i = 0; i < len; ++i) {
@@ -430,7 +417,7 @@ hexdump(boost::asio::buffer_cast<const char*>(response_.data()),
 
 	boost::asio::async_read(socket_,
 		response_,
-		boost::asio::transfer_exactly(chunk_size),
+		boost::asio::transfer_exactly(chunk_size - response_.size()),
 		boost::bind(&WebClient::handleReadChunkData, this,
 			boost::asio::placeholders::error,
 			boost::asio::placeholders::bytes_transferred));
@@ -442,7 +429,7 @@ void WebClient::handleReadChunkData(const boost_error_code& error, size_t bytes_
 		return;
 #if defined DEBUG_WITH_HEXDUMP
 hexdump(boost::asio::buffer_cast<const char*>(response_.data()),
-	bytes_transferred);
+	response_.size());
 #endif /* DEBUG_WITH_HEXDUMP */
 
 	if (error) {
@@ -452,8 +439,8 @@ hexdump(boost::asio::buffer_cast<const char*>(response_.data()),
 
 	response_body_.append(
 		boost::asio::buffer_cast<const char*>(response_.data()),
-		bytes_transferred - 2 /* drop trailing "\r\n" */);
-	response_.consume(bytes_transferred);
+		response_.size() - 2 /* drop trailing "\r\n" */);
+	response_.consume(response_.size());
 
 	// will be trying to read some chunks remaining.
 	startReadChunkedContent();
