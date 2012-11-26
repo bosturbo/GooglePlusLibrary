@@ -47,6 +47,18 @@ Luabind (MIT License)
 UTF-8 CPP (調査中)  
 (http://sourceforge.net/projects/utfcpp/) 
 
+OS Xブランチのbuild方法
+--------
+1. Xcodeをインストール
+2. Xcode Command Line Toolsをインストール
+3. Homebrewをインストール
+4. brew tap homebrew/dupes
+5. brew install wget boost-build boost gcc
+6. git clone https://github.com/bosturbo/GooglePlusLibrary.git
+7. cd GooglePlusLibrary; git checkout osx
+8. cd GooglePlusLibrary/Project/osx/ext; make
+9. cd GooglePlusLibrary/Projext/osx; make -j 4
+
 最初の一歩(Get Started)
 --------
 ```cpp
