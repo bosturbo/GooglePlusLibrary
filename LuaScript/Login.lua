@@ -111,7 +111,7 @@ function login(mail_address, password)
 	InformationContainer.addInformationByMailAddress("at", at, mail_address)
 	
 	-- get href value
-	href = string.match(response_body, "src=\"(/_/apps%-static/_/js/home/b[^\"]+)\"")
+	href = string.match(response_body, "src=\"(/_/scs/apps%-static/[^\"]+)\"")
 	
 	if(isStringNullOrEmpty(href) == nil) then
 		print("StringNullOrEmpty(href) == nil")
