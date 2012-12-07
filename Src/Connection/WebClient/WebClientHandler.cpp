@@ -122,7 +122,6 @@ string WebClient::setRequestStream()
 {
 	stringstream request_stream;
 
-	cout << "method: " << method_ << ", path: " << path_ << endl; //XXX
 	request_stream << method_ << " " << path_ << " HTTP/1.1\r\n";
 
 	auto request_header_it = request_headers_.cbegin();
@@ -278,7 +277,6 @@ void WebClient::handleReadHeaders(const boost_error_code& error)
 			cookies.push_back(cookie);
 		}
 		response_headers_.insert(make_pair(name, value));
-cout << "header:" << name << "=" << value << endl; //XXX
 		//cout << "header:" << name << "=" << value << endl;
 	}
 
