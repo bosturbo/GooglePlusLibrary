@@ -153,6 +153,7 @@ private:
 
 	std::string method_;
 	std::map<std::string, std::string> response_headers_;
+	std::size_t chunk_remain_;
 	std::string response_body_;
 	std::string url_;
 	std::string path_;

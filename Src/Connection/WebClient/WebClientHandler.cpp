@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 namespace Gplusnasite
 {
@@ -17,6 +18,32 @@ namespace GooglePlusLibrary
 using namespace std;
 using namespace boost::asio::ssl;
 using namespace boost::asio::ip;
+
+#if defined DEBUG_WITH_HEXDUMP
+static void hexdump(const char *buf, size_t len)
+{
+        //             xxxxxxx aa aa aa aa aa aa aa aa:aa aa aa aa aa aa aa aa|aaaaaaaaaaaaaaaa
+        char line[] = "0000000                        :                       |                ";
+        static const char hc[] = "0123456789abcdef";
+        for (size_t i = 0; i < len; ++i) {
+                int c = (unsigned char)buf[i];
+                size_t offset = i % 16;
+                if (offset == 0) {
+                        if (i != 0)
+                                puts(line);
+                        sprintf(line, "%07x", (unsigned int)i);
+                        memset(line + 7, ' ', sizeof line - 8);
+                        line[31] = ':';
+                        line[55] = '|';
+                }
+				char *p = line + 8 + offset * 3;
+				p[0] = hc[(c >> 4) & 0xfU];
+				p[1] = hc[c & 0xfU];
+                line[56 + offset] = isprint(c) ? c : ' ';
+        }
+        puts(line);
+}
+#endif //DEBUG_WITH_HEXDUMP
 
 void WebClient::handleConnectTimeout(const boost_error_code& error)
 {
@@ -95,6 +122,7 @@ string WebClient::setRequestStream()
 {
 	stringstream request_stream;
 
+	cout << "method: " << method_ << ", path: " << path_ << endl; //XXX
 	request_stream << method_ << " " << path_ << " HTTP/1.1\r\n";
 
 	auto request_header_it = request_headers_.cbegin();
@@ -250,6 +278,7 @@ void WebClient::handleReadHeaders(const boost_error_code& error)
 			cookies.push_back(cookie);
 		}
 		response_headers_.insert(make_pair(name, value));
+cout << "header:" << name << "=" << value << endl; //XXX
 		//cout << "header:" << name << "=" << value << endl;
 	}
 
@@ -293,32 +322,6 @@ void WebClient::startReadChunkedContent()
 		boost::asio::placeholders::bytes_transferred));
 
 }
-
-#if defined DEBUG_WITH_HEXDUMP
-static void hexdump(const char *buf, size_t len)
-{
-        //             xxxxxxx aa aa aa aa aa aa aa aa:aa aa aa aa aa aa aa aa aaaaaaaaaaaaaaaa
-        char line[] = "                               :                                        ";
-        static const char hc[] = "0123456789abcdef";
-        for (size_t i = 0; i < len; ++i) {
-                int c = (unsigned char)buf[i];
-                size_t offset = i % 16;
-                if (offset == 0) {
-                        if (i != 0)
-                                puts(line);
-                        sprintf(line, "%07x", (unsigned int)i);
-                        memset(line + 7, ' ', sizeof line - 8);
-                        line[31] = ':';
-                        line[55] = '|';
-                }
-		char *p = line + 8 + offset * 3;
-		p[0] = hc[(c >> 4) & 0xfU];
-		p[1] = hc[c & 0xfU];
-                line[56 + offset] = isprint(c) ? c : ' ';
-        }
-        puts(line);
-}
-#endif //DEBUG_WITH_HEXDUMP
 
 static size_t hex2size_t(const std::string str)
 {
@@ -404,20 +407,40 @@ hexdump(boost::asio::buffer_cast<const char*>(response_.data()),
 		return;
 	}
 
-	string chunk_size_line(boost::asio::buffer_cast<const char*>(response_.data()), bytes_transferred);
-	response_.consume(bytes_transferred);
+	std::string response(boost::asio::buffer_cast<const char*>(response_.data()), response_.size());
+	std::string eol("\r\n");
+	std::size_t pos_eol = response.find(eol);
+	if (std::string::npos == pos_eol) {
+		cout << " error on receive: bad chunk format." << endl;
+		cancelConnect();
+		return;
+	}
+	std::size_t line_length = pos_eol + eol.size();
+
+	string chunk_size_line(boost::asio::buffer_cast<const char*>(response_.data()), line_length);
+	response_.consume(line_length);
 	chunk_size_line.resize(chunk_size_line.length() - 2 /* drop "\r\n" */);
+	if (0 == chunk_size_line.length()) {
+		// no more chunk.
+		cancelConnect();
+	}
 	size_t chunk_size = hex2size_t(chunk_size_line);
 	if (0 == chunk_size) {
-		cancelConnect();
+		// wait next chunk.
+		startReadChunkedContent();
 		return;
 	}
 
 	chunk_size += 2; // for trailing CRLF
+	chunk_remain_  = chunk_size;
+
+	std::size_t size_to_need = 0;
+	if (response_.size() < chunk_size)
+		size_to_need = chunk_size - response_.size();
 
 	boost::asio::async_read(socket_,
 		response_,
-		boost::asio::transfer_exactly(chunk_size - response_.size()),
+		boost::asio::transfer_exactly(size_to_need),
 		boost::bind(&WebClient::handleReadChunkData, this,
 			boost::asio::placeholders::error,
 			boost::asio::placeholders::bytes_transferred));
@@ -437,10 +460,34 @@ hexdump(boost::asio::buffer_cast<const char*>(response_.data()),
 		cancelConnect();
 	}
 
+	std::size_t eat_size = std::min(chunk_remain_, response_.size());
 	response_body_.append(
 		boost::asio::buffer_cast<const char*>(response_.data()),
-		response_.size() - 2 /* drop trailing "\r\n" */);
-	response_.consume(response_.size());
+		// response_.size() - 2 /* drop trailing "\r\n" */);
+		eat_size);
+	response_.consume(eat_size);
+	chunk_remain_ -= eat_size;
+
+	if (chunk_remain_ > 0) {
+		boost::asio::async_read(socket_,
+			response_,
+			boost::asio::transfer_exactly(chunk_remain_),
+			boost::bind(&WebClient::handleReadChunkData, this,
+				boost::asio::placeholders::error,
+				boost::asio::placeholders::bytes_transferred));
+		return;
+	}
+
+	response_body_.resize(response_body_.size() - 2 /* drop trailing "\r\n" */);
+
+	if (response_.size() > 0) {
+		boost::asio::async_read(socket_, response_,
+			boost::asio::transfer_exactly(0),
+			boost::bind(&WebClient::handleReadChunkSize, this,
+			boost::asio::placeholders::error, 
+			boost::asio::placeholders::bytes_transferred));
+		return;
+	}
 
 	// will be trying to read some chunks remaining.
 	startReadChunkedContent();
