@@ -109,7 +109,7 @@ public:
 
 protected:
 
-	std::stringstream setRequestStream();
+	std::string setRequestStream();
 	
 	void checkDeadLine();
 
@@ -134,14 +134,8 @@ protected:
 	void handleReadContent(const boost_error_code& error, size_t bytes_transferred);
 
 	void startReadChunkedContent();
-
 	void handleReadChunkSize(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadChunkSize2(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadEndSize(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadEndLine(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadChunkedContent(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadChunkedContent2(const boost_error_code& error, size_t bytes_transferred);
-	void handleReadChunkedContent3(const boost_error_code& error, size_t bytes_transferred);
+	void handleReadChunkData(const boost_error_code& error, size_t bytes_transferred);
 private:
 	std::shared_ptr<boost::asio::io_service> io_service_ptr_;
 	boost::asio::io_service& io_service_;
@@ -156,10 +150,11 @@ private:
 
 	std::string method_;
 	std::map<std::string, std::string> response_headers_;
+	std::size_t chunk_remain_;
 	std::string response_body_;
 	std::string url_;
 	std::string path_;
-	std::stringstream request_stream_;
+	std::string request_;
 
 	//size_t content_length_;
 	std::string content_;

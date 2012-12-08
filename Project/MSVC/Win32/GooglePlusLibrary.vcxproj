@@ -62,7 +62,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>lua5.1.lib;GooglePlusJsonParser.lib;cppnetlib-client-connectionsd.lib;cppnetlib-urid.lib;libeay32MDd.lib;ssleay32MDd.lib;libluabind_s_mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua5.1.lib;GooglePlusJsonParser.lib;libeay32MDd.lib;ssleay32MDd.lib;libluabind_s_mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\boost_1_52_0\stage\lib;C:\lua\lib;C:\OpenSSL-Win32\lib\VC\static;C:\luabind\bin\msvc-10.0\debug\link-static\threading-multi;D:\Development\GooglePlusLibrary\Src\Json\Debug;D:\Development\GooglePlusLibrary\Src\Connection\ChunkedContentParser\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -86,7 +86,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>lua5.1.lib;GooglePlusJsonParser.lib;cppnetlib-client-connections.lib;cppnetlib-uri.lib;libeay32MD.lib;ssleay32MD.lib;libluabind_s_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>lua5.1.lib;GooglePlusJsonParser.lib;libeay32MD.lib;ssleay32MD.lib;libluabind_s_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>C:\boost_1_52_0\stage\lib;C:\lua\lib;C:\OpenSSL-Win32\lib\VC\static;C:\luabind\bin\msvc-10.0\release\link-static\threading-multi;D:\Development\GooglePlusLibrary\Src\Json\Release;D:\Development\GooglePlusLibrary\Src\Connection\ChunkedContentParser\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
@@ -140,7 +140,6 @@
     <ClCompile Include="..\..\..\Src\Connection\Talkgadget\TalkgadgetConnection.cpp" />
     <ClCompile Include="..\..\..\Src\Connection\Uri.cpp" />
     <ClCompile Include="..\..\..\Src\Connection\WebClient\WebClient.cpp" />
-    <ClCompile Include="..\..\..\Src\Connection\WebClient\WebClientCppNetlib.cpp" />
     <ClCompile Include="..\..\..\Src\Connection\WebClient\WebClientHandler.cpp" />
     <ClCompile Include="..\..\..\Src\Hangout\GroupChat.cpp" />
     <ClCompile Include="..\..\..\Src\Hangout\Hangout.cpp" />
@@ -261,7 +260,6 @@
     <ClInclude Include="..\..\..\Src\Connection\Talkgadget\TalkgadgetConnection.hpp" />
     <ClInclude Include="..\..\..\Src\Connection\Uri.hpp" />
     <ClInclude Include="..\..\..\Src\Connection\WebClient\WebClient.hpp" />
-    <ClInclude Include="..\..\..\Src\Connection\WebClient\WebClientCppNetlib.hpp" />
     <ClInclude Include="..\..\..\Src\Hangout\HangoutConnection.hpp" />
     <ClInclude Include="..\..\..\Src\Information\InformationContainer.hpp" />
     <ClInclude Include="..\..\..\Src\Stream\Comment\CommentBase.hpp" />

@@ -16,6 +16,7 @@
 #endif
 #endif
 
+#include <memory>
 #include <string>
 #include <map>
 

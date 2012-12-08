@@ -25,13 +25,14 @@ void StreamConnectionImpl::initializeAsyncThreadMethod(const wstring& account_id
 		return;
 	}
 	
-	LuaScript<bool(string)> lua_script("LuaScript/StreamInitialize.lua", "streamInitialize", [](lua_State* lua_state)
+	LuaScript<bool(string)> lua_script("LuaScript/StreamInitialize.lua", "streamInitialize", [this](lua_State* lua_state)
 	{
 		Connection::bindToScript(lua_state);
 		HttpResponse::bindToScript(lua_state);
 		Utility::bindToScript(lua_state);
 		InformationContainer::bindToScript(lua_state);
 		JsonObject::bindToScript(lua_state);
+		bindToScript(lua_state);
 	});
 
 	lua_script.onLoadingScriptFailed.connect([&](string message)

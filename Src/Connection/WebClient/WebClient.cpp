@@ -33,7 +33,7 @@ method_("GET"),
 response_body_(""),
 url_(url),
 path_(""),
-request_stream_(),
+request_(),
 response_(),
 content_(""),
 content_type_(""),
@@ -85,8 +85,6 @@ status_code_(0)
 		boost::bind(&WebClient::handleResolve, this, 
 		boost::asio::placeholders::error, 
 		boost::asio::placeholders::iterator));
-	
-	connect_timer_.async_wait(boost::bind(&WebClient::checkDeadLine, this));
 }
 
 void WebClient::setCurrentMailAddress(const string& mail_address)
@@ -363,7 +361,7 @@ void WebClient::setTimeOut(boost::posix_time::seconds time)
 
 void WebClient::sendRequest()
 {
-	request_stream_ = setRequestStream();
+	request_ = setRequestStream();
 	io_service_.run();
 }
 

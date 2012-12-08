@@ -4,12 +4,12 @@
 
 #include <boost/bind.hpp>
 #include <boost/algorithm/string/trim.hpp>
-#include <boost/spirit/include/qi.hpp>
-#include <boost/spirit/include/phoenix.hpp>
-#include <boost/regex.hpp>
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
+
+//#define DEBUG_WITH_HEXDUMP
 
 namespace Gplusnasite
 {
@@ -19,8 +19,55 @@ namespace GooglePlusLibrary
 using namespace std;
 using namespace boost::asio::ssl;
 using namespace boost::asio::ip;
-namespace qi = boost::spirit::qi;
-namespace phoenix = boost::phoenix;
+
+#if defined DEBUG_WITH_HEXDUMP
+
+static void hexdump(const char *buf, size_t len)
+{
+
+	//             xxxxxxx aa aa aa aa aa aa aa aa:aa aa aa aa aa aa aa aa|aaaaaaaaaaaaaaaa
+
+	char line[] = "0000000                        :                       |                ";
+
+	static const char hc[] = "0123456789abcdef";
+
+	for (size_t i = 0; i < len; ++i) {
+
+		int c = (unsigned char)buf[i];
+
+		size_t offset = i % 16;
+
+		if (offset == 0) {
+
+			if (i != 0)
+
+				puts(line);
+
+			sprintf(line, "%07x", (unsigned int)i);
+
+			memset(line + 7, ' ', sizeof line - 8);
+
+			line[31] = ':';
+
+			line[55] = '|';
+
+		}
+
+		char *p = line + 8 + offset * 3;
+
+		p[0] = hc[(c >> 4) & 0xfU];
+
+		p[1] = hc[c & 0xfU];
+
+		line[56 + offset] = isprint(c) ? c : ' ';
+
+	}
+
+	puts(line);
+
+}
+
+#endif //DEBUG_WITH_HEXDUMP
 
 void WebClient::handleConnectTimeout(const boost_error_code& error)
 {
@@ -41,7 +88,6 @@ void WebClient::handleResolve(const boost_error_code& error, asio_resolver::iter
 		return;
 	}
 	startConnect(endpoint_iterator);
-	connect_timer_.async_wait(boost::bind(&WebClient::checkDeadLine, this));
 }
 
 void WebClient::startConnect(tcp::resolver::iterator endpoint_iterator)
@@ -96,10 +142,11 @@ void WebClient::handleConnect(const boost_error_code& error, tcp::resolver::iter
 	}
 }
 
-stringstream WebClient::setRequestStream()
+string WebClient::setRequestStream()
 {
 	stringstream request_stream;
 
+	//cout << "method: " << method_ << ", path: " << path_ << endl; //XXX
 	request_stream << method_ << " " << path_ << " HTTP/1.1\r\n";
 
 	auto request_header_it = request_headers_.cbegin();
@@ -146,7 +193,7 @@ stringstream WebClient::setRequestStream()
 	{
 		request_stream << content_;
 	}
-	return request_stream;
+	return request_stream.str();
 }
 
 void WebClient::handleHandshake(const boost_error_code& error)
@@ -165,7 +212,7 @@ void WebClient::startWrite()
 	}
 
 	boost::asio::async_write(socket_, 
-		boost::asio::buffer(request_stream_.str().c_str(), strlen(request_stream_.str().c_str())), 
+		boost::asio::buffer(request_.c_str(), strlen(request_.c_str())), 
 		boost::bind(&WebClient::handleWrite, this, boost::asio::placeholders::error));		
 }
 
@@ -182,8 +229,6 @@ void WebClient::handleWrite(const boost_error_code& error)
 		cancelConnect();
 		return;
 	}
-	heartbeat_timer_.expires_from_now(boost::posix_time::seconds(10));
-	heartbeat_timer_.async_wait(boost::bind(&WebClient::startWrite, this));
 }
 
 void WebClient::handleReadStatusLine(const boost_error_code& error)
@@ -257,7 +302,7 @@ void WebClient::handleReadHeaders(const boost_error_code& error)
 			cookies.push_back(cookie);
 		}
 		response_headers_.insert(make_pair(name, value));
-		//cout << "header:" << name << "=" << value << endl;
+		//cout << "header:" << name << "=" << value << endl; //XXX
 	}
 
 	response_cookies_ = cookies;
@@ -275,7 +320,7 @@ void WebClient::handleReadHeaders(const boost_error_code& error)
 		{
 			size_t size = boost::lexical_cast<size_t>(length);
 			boost::asio::async_read(socket_, response_,
-				boost::asio::transfer_exactly(size),
+				boost::asio::transfer_exactly(size - response_.size()),
 				boost::bind(&WebClient::handleReadContent, this,
 					boost::asio::placeholders::error,
 					boost::asio::placeholders::bytes_transferred)
@@ -294,392 +339,205 @@ void WebClient::handleReadHeaders(const boost_error_code& error)
 
 void WebClient::startReadChunkedContent()
 {
-	//cout << "LoadHandleReadChunkSize" << endl;
-
-	connect_timer_.expires_from_now(boost::posix_time::seconds(30));
-	/*
-	boost::asio::async_read_until(socket_, response_, "\n",
-		boost::bind(&WebClient::handleReadChunkSize, this, 
+	boost::asio::async_read_until(socket_, response_, "\r\n",
+		boost::bind(&WebClient::handleReadChunkSize, this,
 			boost::asio::placeholders::error,
 			boost::asio::placeholders::bytes_transferred));
-			*/
-	
-	boost::asio::async_read_until(socket_, response_, "\n",
-		boost::bind(&WebClient::handleReadChunkedContent, this,
-			boost::asio::placeholders::error,
-			boost::asio::placeholders::bytes_transferred));
-
 }
+
+static size_t hex2size_t(const std::string str)
+{
+	size_t size = 0;
+	for (const char *p = str.c_str(); *p; ++p) {
+		switch (*p) {
+			// case '0': break; // nothing to do
+		case '1':
+			size += 1;
+			break;
+		case '2':
+			size += 2;
+			break;
+		case '3':
+			size += 3;
+			break;
+		case '4':
+			size += 4;
+			break;
+		case '5':
+			size += 5;
+			break;
+		case '6':
+			size += 6;
+			break;
+		case '7':
+			size += 7;
+			break;
+		case '8':
+			size += 8;
+			break;
+		case '9':
+			size += 9;
+			break;
+		case 'A':
+		case 'a':
+			size += 10;
+			break;
+		case 'B':
+		case 'b':
+			size += 11;
+			break;
+		case 'C':
+		case 'c':
+			size += 12;
+			break;
+		case 'D':
+		case 'd':
+			size += 13;
+			break;
+		case 'E':
+		case 'e':
+			size += 14;
+			break;
+		case 'F':
+		case 'f':
+			size += 15;
+			break;
+		default:
+			// nothing to do
+			break;
+		}
+		if ('\0' == p[1])
+			break;
+		size <<= 4;
+	}
+
+	return size;
+}
+
 
 void WebClient::handleReadChunkSize(const boost_error_code& error, size_t bytes_transferred)
 {
-	cout << "HandleReadChunkSize" << endl;
-
-	if (is_cancellation_pending_)
-	{
-		cancelConnect();
-		return;
-	}
-
-	if (error)
-	{
-		cout << "Error on receive: " << error.message() << endl;
-		cancelConnect();
-		return;
-	}
-
-	string line = string(boost::asio::buffer_cast<const char*>(response_.data()), bytes_transferred);
-	response_.consume(bytes_transferred);
-
-	size_t size = -1;
-
-	if(qi::parse(line.cbegin(), line.cend(), qi::hex[phoenix::ref(size) = qi::_1] >> (qi::lit("\r\n") | qi::lit("\n"))))
-	{
-		if(size == 0)
-		{
-			cancelConnect();
-		}
-		else
-		{
-			cout << "LoadHandleReadChunkedContent" << endl;
-			cout << "Chunk Size:" <<size << endl;
-
-			boost::asio::async_read(socket_, response_, 
-				boost::asio::transfer_exactly(size),
-				boost::bind(&WebClient::handleReadChunkedContent3, this,
-				boost::asio::placeholders::error,
-				boost::asio::placeholders::bytes_transferred));
-		}
-	}
-	else
-	{
-		cancelConnect();
-	}
-}
-
-void WebClient::handleReadChunkSize2(const boost_error_code& error, size_t bytes_transferred)
-{
-	//cout << "HandleReadChunkSize" << endl;
-
 	if (is_cancellation_pending_)
 	{
 		return;
 	}
 
-	if (error)
-	{
-		cout << "Error on receive: " << error.message() << endl;
+	//cout << "handleReadChunkSize" << endl;
+	//cout << "URL:" << url_ << endl;
+
+#if defined DEBUG_WITH_HEXDUMP
+	hexdump(boost::asio::buffer_cast<const char*>(response_.data()),
+		bytes_transferred);
+#endif /* DEBUG_WITH_HEXDUMP */
+
+	if (error) {
+		cout << "error on receive: " << error.message() << endl;
 		cancelConnect();
 		return;
 	}
-	
-	string line = string(boost::asio::buffer_cast<const char*>(response_.data()), bytes_transferred);
-	response_.consume(bytes_transferred);
-	if(line.find("0\r\n") >= 0)
-	{
-		int a = 3;
-	}
-	int size = -1;
 
-	if(qi::parse(line.cbegin(), line.cend(), qi::hex[phoenix::ref(size) = qi::_1] >> (qi::lit("\r\n") | qi::lit("\n"))))
+	std::string response(boost::asio::buffer_cast<const char*>(response_.data()), response_.size());
+	std::string eol("\r\n");
+	std::size_t pos_eol = response.find(eol);
+	if (std::string::npos == pos_eol)
 	{
-		if(size == 0)
-		{
-			cout << "handleReadChunkSize2 size == 0----------------------------------------------------------------" << endl;
-			cancelConnect();
-			return;
-		}
-		read_size_ = size;
-		//read_mode_ = ReadEndSize;
-		read_mode_ = ReadChunkedContent;
+		cout << " error on receive: bad chunk format." << endl;
+		cancelConnect();
+		return;
+	}
+	std::size_t line_length = pos_eol + eol.size();
+
+	string chunk_size_line(boost::asio::buffer_cast<const char*>(response_.data()), line_length);
+	response_.consume(line_length);
+
+	chunk_size_line.resize(chunk_size_line.length() - 2 /* drop "\r\n" */);
+
+	if (0 == chunk_size_line.length())
+	{
+		// no more chunk.
+		cancelConnect();
+	}
+
+	size_t chunk_size = hex2size_t(chunk_size_line);
+	if (0 == chunk_size)
+	{
+		// wait next chunk.
 		startReadChunkedContent();
-	}
-	else
-	{
-		cout << "handleReadChunkSize2 parse failed----------------------------------------------------------------" << endl;
-		cancelConnect();
 		return;
 	}
-	
+
+	chunk_size += 2; // for trailing CRLF
+	chunk_remain_  = chunk_size;
+
+	std::size_t size_to_need = 0;
+	if (response_.size() < chunk_size)
+		size_to_need = chunk_size - response_.size();
+
+	boost::asio::async_read(socket_,
+		response_,
+		boost::asio::transfer_exactly(size_to_need),
+		boost::bind(&WebClient::handleReadChunkData, this,
+		boost::asio::placeholders::error,
+		boost::asio::placeholders::bytes_transferred));
 }
 
-void WebClient::handleReadEndSize(const boost_error_code& error, size_t bytes_transferred)
+void WebClient::handleReadChunkData(const boost_error_code& error, size_t bytes_transferred)
 {
-	//cout << "HandleReadEndSize" << endl;
-
 	if (is_cancellation_pending_)
 	{
 		return;
 	}
 
-	if (error)
-	{
-		cout << "Error on receive: " << error.message() << endl;
+	//cout << "handleReadChunkData" << endl;
+	//cout << "URL:" << url_ << endl;
+
+#if defined DEBUG_WITH_HEXDUMP
+	hexdump(boost::asio::buffer_cast<const char*>(response_.data()),
+		response_.size());
+#endif /* DEBUG_WITH_HEXDUMP */
+
+	if (error) {
+		cout << "error on receive: " << error.message() << endl;
 		cancelConnect();
+	}
+
+	std::size_t eat_size = std::min(chunk_remain_, response_.size());
+
+	string res(boost::asio::buffer_cast<const char*>(response_.data()), eat_size);
+	if(url_.substr(0, 59) == "https://talkgadget.google.com/u/0/talkgadget/_/channel/bind")
+	{
+		cout << "response:" << res << endl;
+	}
+
+	response_body_.append(boost::asio::buffer_cast<const char*>(response_.data()), eat_size);
+
+	response_.consume(eat_size);
+	chunk_remain_ -= eat_size;
+
+	if (chunk_remain_ > 0) {
+		boost::asio::async_read(socket_,
+			response_,
+			boost::asio::transfer_exactly(chunk_remain_),
+			boost::bind(&WebClient::handleReadChunkData, this,
+			boost::asio::placeholders::error,
+			boost::asio::placeholders::bytes_transferred));
 		return;
 	}
 
-	string line = string(boost::asio::buffer_cast<const char*>(response_.data()), bytes_transferred);
-	response_.consume(bytes_transferred);
-	if(line.find("0\r\n") >= 0)
+	response_body_.resize(response_body_.size() - 2 /* drop trailing "\r\n" */);
+		
+	if (response_.size() > 0)
 	{
-		int a = 3;
+		boost::asio::async_read(socket_, response_,
+			boost::asio::transfer_exactly(0),
+			boost::bind(&WebClient::handleReadChunkSize, this,
+			boost::asio::placeholders::error, 
+			boost::asio::placeholders::bytes_transferred));
+		return;
 	}
-	read_size_ -= bytes_transferred;
 
-	int end_size = -1;
-	/*
-	if(qi::parse(line.cbegin(), line.cend(), qi::hex[phoenix::ref(end_size) = qi::_1] >> (qi::lit("\r\n") | qi::lit("\n"))))
-	{
-		if(end_size > 0)
-		{
-			read_end_size_ = end_size;
-		}
-		else
-		{
-			response_body_ += line;
-		}
-	}
-	else
-	{
-		response_body_ += line;
-	}
-	*/
-	response_body_ += line;
-
-	read_mode_ = ReadChunkedContent;
+	// will be trying to read some chunks remaining.
 	startReadChunkedContent();
-}
-
-void WebClient::handleReadEndLine(const boost_error_code& error, size_t bytes_transferred)
-{
-	cout << "HandleReadChunkSize" << endl;
-	string raw_line = string(boost::asio::buffer_cast<const char*>(response_.data()), bytes_transferred);
-	if(raw_line != "\r\n")
-	{
-		cout << "End Line:" << raw_line << endl;
-	}
-	response_.consume(bytes_transferred);
-	/*
-	int size = response_.size();
-	if(size == 0)
-	{
-		cancelConnect();
-		return;
-	}
-	*/
-	startReadChunkedContent();
-}
-
-void WebClient::handleReadChunkedContent2(const boost_error_code& error, size_t bytes_transferred)
-{
-	if (is_cancellation_pending_)
-		return;
-
-	if (!error)
-	{
-		string line("");
-		/*
-		istream is(&response_);
-
-		if(!(getline(is, line) && line != "\r"))
-		{
-			//cout << "-------------------------------------------------------------------" << endl;
-			cancelConnect();
-			return;
-		}
-		*/
-		string aa = string(boost::asio::buffer_cast<const char*>(response_.data()), response_.size());
-		line = string(boost::asio::buffer_cast<const char*>(response_.data()), bytes_transferred);
-		int position = line.find("\n");
-		if(position < 0)
-		{
-			cout << "1-------------------------------------------------------------------" << endl;
-			cancelConnect();
-			return;
-		}
-		
-		line = line.substr(0, position + 1);
-		response_.consume(line.size());
-		/*
-		int size = response_.size();
-		if(size <= 0)
-		{
-			//cout << "response_.size() = 0" << endl;
-			cancelConnect();
-			return;
-		}
-		*/
-		if((response_.size() <= 0) && (line == "\r\n"))
-		{
-			cout << "2-------------------------------------------------------------------" << endl;
-			cancelConnect();
-			return;
-		}
-		
-		if(!qi::parse(line.cbegin(), line.cend(), qi::hex >> (qi::lit("\r\n") | qi::lit("\n"))))
-		{
-			// line is chunk size
-			response_body_ += line;
-		}
-		/*
-		boost::regex regex("([0-9a-zA-Z]+)\\r\\n");
-		boost::smatch smatch;
-
-		if(boost::regex_search(line, smatch, regex))
-		{
-			int position = smatch.position();
-			if(smatch.position() != 0)
-			{
-				response_body_ += line;
-			}
-			else
-			{
-				int a = 3;
-			}
-		}
-		else
-		{
-			response_body_ += line;
-		}
-		*/
-		startReadChunkedContent();
-	}
-	else
-	{
-		cout << "Error on receive: " << error.message() << L"\n";
-		cancelConnect();
-	}
-}
-
-void WebClient::handleReadChunkedContent(const boost_error_code& error, size_t bytes_transferred)
-{
-	if (is_cancellation_pending_)
-		return;
-
-	if (!error)
-	{
-		string line("");
-		string aa = string(boost::asio::buffer_cast<const char*>(response_.data()), response_.size());
-		line = string(boost::asio::buffer_cast<const char*>(response_.data()), bytes_transferred);
-		response_.consume(bytes_transferred);
-
-		if(line == "\r\n")
-		{
-			cancelConnect();
-			return;
-		}
-		/*
-		if((response_.size() <= 0) && (line == "\r\n"))
-		{
-			cancelConnect();
-			return;
-		}
-		*/
-		/*
-		if(!qi::parse(line.cbegin(), line.cend(), qi::hex >> (qi::lit("\r\n") | qi::lit("\n"))))
-		{
-			// line is chunk size
-			response_body_ += line;
-		}
-		*/
-
-		boost::regex regex("([0-9a-zA-Z]+)\\r\\n");
-		boost::smatch smatch;
-
-		if(boost::regex_search(line, smatch, regex))
-		{
-			if(smatch.position() != 0)
-			{
-				response_body_ += line;
-			}
-		}
-		else
-		{
-			response_body_ += line;
-		}
-
-		startReadChunkedContent();
-		/*
-		boost::asio::async_read_until(socket_, response_, "\n", 
-			boost::bind(&WebClient::handleReadEndLine, this, 
-			_1, _2));
-			*/
-	}
-	else
-	{
-		cout << "Error on receive: " << error.message() << L"\n";
-		cancelConnect();
-	}
-}
-
-void WebClient::handleReadChunkedContent3(const boost_error_code& error, size_t bytes_transferred)
-{
-	if (is_cancellation_pending_)
-	{
-		cancelConnect();
-		return;
-	}
-
-	if (!error)
-	{
-		string line("");
-		string aa = string(boost::asio::buffer_cast<const char*>(response_.data()), response_.size());
-		line = string(boost::asio::buffer_cast<const char*>(response_.data()), bytes_transferred);
-		response_.consume(bytes_transferred);
-
-		if(line == "\r\n")
-		{
-			cancelConnect();
-			return;
-		}
-		/*
-		if((response_.size() <= 0) && (line == "\r\n"))
-		{
-			cancelConnect();
-			return;
-		}
-		*/
-		
-		if(qi::parse(line.cbegin(), line.cend(), qi::hex >> (qi::lit("\r\n") | qi::lit("\n")) >> qi::as_string[*qi::char_][phoenix::ref(response_body_) += qi::_1]))
-		{
-			// stream response
-			cancelConnect();
-			return;
-		}
-		else
-		{
-			response_body_ += line;
-		}
-		
-		/*
-		boost::regex regex("([0-9a-zA-Z]+)\\r\\n");
-		boost::smatch smatch;
-
-		if(boost::regex_search(line, smatch, regex))
-		{
-			if(smatch.position() != 0)
-			{
-				response_body_ += line;
-			}
-		}
-		else
-		{
-			response_body_ += line;
-		}
-		*/
-		//startReadChunkedContent();
-		
-		boost::asio::async_read_until(socket_, response_, "\n", 
-			boost::bind(&WebClient::handleReadEndLine, this, 
-				boost::asio::placeholders::error,
-				boost::asio::placeholders::bytes_transferred));
-	}
-	else
-	{
-		cout << "Error on receive: " << error.message() << L"\n";
-		cancelConnect();
-	}
 }
 
 void WebClient::handleReadContent(const boost_error_code& error, size_t bytes_transferred)

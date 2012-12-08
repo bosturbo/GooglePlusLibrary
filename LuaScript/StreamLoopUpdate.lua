@@ -47,7 +47,7 @@ function streamLoopUpdate(account_id)
 	connection = Connection()
 	connection:setCurrentAccountID(account_id)
 	
-	url = "https://talkgadget.google.com/talkgadget/channel/bind?VER=8&clid=" .. clid .. "&gsessionid=" .. gsessionid .. "&"
+	url = "https://talkgadget.google.com/u/0/talkgadget/_/channel/bind?VER=8&clid=" .. clid .. "&gsessionid=" .. gsessionid .. "&"
 	url = url .. "prop=homepage&ujidr=TalkGadget" .. talkgadget_number .. "&eid&ec=" .. Connection.escapeString("[0,0,0]") .. "&"
 	url = url .. "RID=rpc&SID=" .. sid .. "&CI=0&AID=" .. aid .. "&TYPE=xmlhttp&zx=" .. generateZxString() .. "&t=1"
 	
@@ -55,7 +55,7 @@ function streamLoopUpdate(account_id)
 	
 	response_body = response:getResponseBody()
 	
-	print("response_body:" .. response_body)
+	--print("response_body:" .. response_body)
 	
 	status = response:getStatusCode()
 	if(status ~= 200) then

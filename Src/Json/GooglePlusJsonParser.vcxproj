@@ -62,14 +62,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\boost_1_51_0;C:\lua5_1_4_Win32_dll8_lib\include;C:\luabind;D:\Development\GooglePlusLibrary\Src;D:\Development\utf8_v2_3_2\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_52_0;C:\lua\include;C:\luabind;D:\Development\GooglePlusLibrary\Src;D:\Development\utf8_v2_3_2\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>C:\boost_1_51_0\stage\lib;C:\lua5_1_4_Win32_dll8_lib;C:\luabind\bin\msvc-10.0\debug\link-static\threading-multi;D:\Development\JsonParserTest\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\boost_1_52_0\stage\lib;C:\lua\lib;C:\luabind\bin\msvc-10.0\debug\link-static\threading-multi;D:\Development\JsonParserTest\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
@@ -82,7 +82,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\boost_1_51_0;C:\lua5_1_4_Win32_dll8_lib\include;C:\luabind;D:\Development\GooglePlusLibrary\Src;D:\Development\utf8_v2_3_2\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\boost_1_52_0;C:\lua\include;C:\luabind;D:\Development\GooglePlusLibrary\Src;D:\Development\utf8_v2_3_2\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -91,7 +91,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>C:\boost_1_51_0\stage\lib;C:\lua5_1_4_Win32_dll8_lib;C:\luabind\bin\msvc-10.0\release\link-static\threading-multi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\boost_1_52_0\stage\lib;C:\lua\lib;C:\luabind\bin\msvc-10.0\release\link-static\threading-multi;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>

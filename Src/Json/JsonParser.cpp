@@ -42,6 +42,7 @@ JsonObject JsonParser::parse(const wstring& json) const
 			cout << "JsonParser:ParseFailed" << endl; 
 #endif
 			
+#ifdef LOGGING
 			wstringstream string_stream;
 			string_stream << "FailedJson";
 			string_stream << count;
@@ -50,6 +51,7 @@ JsonObject JsonParser::parse(const wstring& json) const
 			json_file = _wfopen(string_stream.str().c_str(), L"w, ccs=UTF-16LE");
 			fwprintf(json_file, json.c_str());
 			fclose(json_file);
+#endif
 		}
 	}
 	catch (...)
@@ -57,6 +59,8 @@ JsonObject JsonParser::parse(const wstring& json) const
 #ifdef TRACE
 		cout << "JsonParser:ParseFailed" << endl; 
 #endif
+
+#ifdef LOGGING
 		wstringstream string_stream;
 		string_stream << "Failed(Exception)Json";
 		string_stream << count;
@@ -66,6 +70,7 @@ JsonObject JsonParser::parse(const wstring& json) const
 		json_file = _wfopen(string_stream.str().c_str(), L"w, ccs=UTF-16LE");
 		fwprintf(json_file, json.c_str());
 		fclose(json_file);
+#endif
 	}
 
 	++count;
