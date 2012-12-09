@@ -26,11 +26,6 @@ function generatePVTString()
 	return ("AMP3u" .. Utility.generateRandomString(89, 89, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-=_") .. "==")
 end
 
-function sleep(milliseconds)
-	stream_connection_impl = StreamConnectionImpl()
-	stream_connection_impl:scriptSleep(milliseconds)
-end
-
 function makeParameter(parameter_name, parameter)
 	do return (parameter_name .. "=" .. parameter) end
 end

@@ -17,10 +17,11 @@
 #endif
 #endif
 
+#include <boost/signals2.hpp>
+
 #include <string>
 #include <map>
 #include <iosfwd>
-#include <boost/signals2.hpp>
 
 struct lua_State;
 
@@ -29,6 +30,7 @@ namespace Gplusnasite
 namespace GooglePlusLibrary
 {
 
+class WebClient;
 class HttpResponse;
 class JsonObject;
 
@@ -198,9 +200,14 @@ public:
 
 	static void bindToScript(lua_State* lua_state);
 
+protected:
+	void connectEventHandler(WebClient& client);
+
 public:
 	boost::signals2::signal<void(HttpResponse)> onResponseReceived;
 
+	boost::signals2::signal<void(const std::string&)> onChunkedContentReceived;
+	
 	virtual ~Connection();
 private:
 

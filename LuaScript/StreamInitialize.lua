@@ -33,14 +33,12 @@ function streamInitialize(account_id)
 		do return false end
 	end
 	
-	url = "https://talkgadget.google.com/talkgadget/channel/bind?VER=8&"
+	url = "https://talkgadget.google.com/u/0/talkgadget/_/channel/bind?VER=8&"
 	url = url .. "clid=" .. clid .. "&gsessionid=" .. gsessionid .. "&prop=homepage&ujidr=TalkGadget" .. talkgadget_number .. "&"
 	url = url .. "eid&ec=" .. Connection.escapeString("[0,0,0]") .. "&RID=" .. generateRIDValue() .. "&CVER=1&zx=" .. generateZxString() .. "&t=1"
 	
 	response = connection:httpPost(url, "count=0")
 	response_body = response:getResponseBody()
-	print("res:" .. response_body)
-	print("first")
 	
 	json = connection:convertResponseToJson(response_body)
 	
@@ -67,7 +65,7 @@ function streamInitialize(account_id)
 	
 	print("Stream connecting ...")
 	
-	url = "https://talkgadget.google.com/talkgadget/channel/bind?VER=8&clid=" .. clid .. "&gsessionid=" .. gsessionid .. "&"
+	url = "https://talkgadget.google.com/u/0/talkgadget/_/channel/bind?VER=8&clid=" .. clid .. "&gsessionid=" .. gsessionid .. "&"
 	url = url .. "prop=homepage&ujidr=TalkGadget" .. talkgadget_number .. "&eid&ec=" .. Connection.escapeString("[0,0,0]") .. "&"
 	url = url .. "SID=" .. sid .. "&RID=" .. generateRIDValue() .. "&AID=2&zx=" .. generateZxString() .. "&t=1"
 	
@@ -116,8 +114,6 @@ function streamInitialize(account_id)
 	
 	response = connection:httpPost(url, parameter)
 	response_body = response:getResponseBody()
-	print(response_body)
-	print("second")
 	
 	-- start updating
 	

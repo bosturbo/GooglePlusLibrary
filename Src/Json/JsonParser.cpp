@@ -5,6 +5,10 @@
 
 #include <boost/algorithm/string/replace.hpp>
 
+#if defined _MSC_VER
+#define LOGGING
+#endif
+
 namespace Gplusnasite
 {
 namespace GooglePlusLibrary
@@ -59,6 +63,7 @@ JsonObject JsonParser::parse(const wstring& json) const
 #ifdef TRACE
 		cout << "JsonParser:ParseFailed" << endl; 
 #endif
+
 #ifdef LOGGING
 		wstringstream string_stream;
 		string_stream << "Failed(Exception)Json";

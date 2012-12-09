@@ -1,7 +1,5 @@
 #include <Stream/StreamConnectionImpl.hpp>
 
-#include <boost/asio.hpp>
-
 namespace Gplusnasite
 {
 namespace GooglePlusLibrary
@@ -41,15 +39,6 @@ void StreamConnectionImpl::initializeAsync(const wstring& account_id)
 void StreamConnectionImpl::waitInitializeAsync()
 {
 	initialize_thread_.join();
-}
-
-void StreamConnectionImpl::scriptSleep(long milliseconds)
-{
-	boost::asio::io_service io_service;
-	boost::asio::deadline_timer timer(io_service);
-
-	timer.expires_from_now(boost::posix_time::milliseconds(milliseconds));
-	timer.wait();
 }
 
 void StreamConnectionImpl::cancelUpdate()

@@ -59,15 +59,6 @@ void StreamConnection::update(const wstring& account_id)
 	impl_->update(account_id);
 }
 
-void StreamConnection::scriptSleep(long milliseconds)
-{
-	if(!impl_)
-	{
-		return;
-	}
-	impl_->scriptSleep(milliseconds);
-}
-
 void StreamConnection::cancelUpdate()
 {
 	if(!impl_)

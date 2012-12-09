@@ -256,14 +256,14 @@
     <ClCompile Include="..\..\..\Src\Stream\StreamImpl.cpp">
       <Filter>Stream</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Src\Connection\WebClient\WebClientCppNetlib.cpp">
-      <Filter>Connection\WebClient</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Src\Utility\UtilityImpl.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Src\Utility\UtilityLuaImpl.cpp">
       <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\StreamObserver.cpp">
+      <Filter>Stream</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -657,11 +657,11 @@
     <ClInclude Include="..\..\..\Include\Stream\StreamImpl.hpp">
       <Filter>Stream</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Src\Connection\WebClient\WebClientCppNetlib.hpp">
-      <Filter>Connection\WebClient</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Src\Utility\UtilityImpl.hpp">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\StreamObserver.hpp">
+      <Filter>Stream</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

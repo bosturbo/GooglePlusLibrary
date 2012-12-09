@@ -87,6 +87,7 @@ Stream/StreamConnection.cpp
 Stream/StreamConnectionImpl.cpp
 Stream/StreamConnectionImplLua.cpp
 Stream/StreamImpl.cpp
+Stream/StreamObserver.cpp
 Thread/ReadWriteMutex.cpp
 Utility/Utility.cpp
 Utility/UtilityImpl.cpp

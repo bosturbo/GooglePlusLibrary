@@ -52,7 +52,7 @@ protected:
 	HttpResponse(const std::string& url, int status_code, const std::map<std::string, std::string>& response_header, 
 		const std::list<Cookie>& response_cookie, 
 		const std::string& response_body);
-
+	
 public:
 	std::string getUrl() const;
 private:
