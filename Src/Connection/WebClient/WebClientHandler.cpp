@@ -503,11 +503,9 @@ void WebClient::handleReadChunkData(const boost_error_code& error, size_t bytes_
 
 	std::size_t eat_size = std::min(chunk_remain_, response_.size());
 
-	string res(boost::asio::buffer_cast<const char*>(response_.data()), eat_size);
-	if(url_.substr(0, 59) == "https://talkgadget.google.com/u/0/talkgadget/_/channel/bind")
-	{
-		cout << "response:" << res << endl;
-	}
+	string chunked_content(boost::asio::buffer_cast<const char*>(response_.data()), eat_size);
+	
+	onChunkedContentReceived(chunked_content);
 
 	response_body_.append(boost::asio::buffer_cast<const char*>(response_.data()), eat_size);
 

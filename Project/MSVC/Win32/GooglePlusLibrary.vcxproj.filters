@@ -262,6 +262,9 @@
     <ClCompile Include="..\..\..\Src\Utility\UtilityLuaImpl.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Src\Stream\StreamObserver.cpp">
+      <Filter>Stream</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Account">
@@ -656,6 +659,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Src\Utility\UtilityImpl.hpp">
       <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Src\Stream\StreamObserver.hpp">
+      <Filter>Stream</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

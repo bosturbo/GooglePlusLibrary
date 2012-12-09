@@ -5,6 +5,8 @@
 
 #include <boost/algorithm/string/replace.hpp>
 
+#define LOGGING
+
 namespace Gplusnasite
 {
 namespace GooglePlusLibrary

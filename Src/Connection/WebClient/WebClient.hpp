@@ -19,11 +19,12 @@
 
 //#define BOOST_ASIO_ENABLE_HANDLER_TRACKING
 
-#include <string>
-#include <map>
-
 #include <boost/asio.hpp>
 #include <boost/asio/ssl/stream.hpp>
+#include <boost/signals2.hpp>
+
+#include <string>
+#include <map>
 #include <iosfwd>
 
 typedef boost::asio::ssl::stream<boost::asio::ip::tcp::socket> asio_ssl_stream;
@@ -51,6 +52,8 @@ private:
 	std::string current_account_id_;
 
 public:
+	boost::signals2::signal<void(const std::string&)> onChunkedContentReceived;
+
 	HttpResponse get();
 	HttpResponse post(const std::string& parameter);
 	HttpResponse put(std::ifstream& file_stream);
@@ -136,6 +139,7 @@ protected:
 	void startReadChunkedContent();
 	void handleReadChunkSize(const boost_error_code& error, size_t bytes_transferred);
 	void handleReadChunkData(const boost_error_code& error, size_t bytes_transferred);
+	
 private:
 	std::shared_ptr<boost::asio::io_service> io_service_ptr_;
 	boost::asio::io_service& io_service_;
@@ -156,7 +160,6 @@ private:
 	std::string path_;
 	std::string request_;
 
-	//size_t content_length_;
 	std::string content_;
 	std::string content_type_;
 

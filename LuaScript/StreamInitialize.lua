@@ -39,8 +39,6 @@ function streamInitialize(account_id)
 	
 	response = connection:httpPost(url, "count=0")
 	response_body = response:getResponseBody()
-	print("res:" .. response_body)
-	print("first")
 	
 	json = connection:convertResponseToJson(response_body)
 	
@@ -116,8 +114,6 @@ function streamInitialize(account_id)
 	
 	response = connection:httpPost(url, parameter)
 	response_body = response:getResponseBody()
-	print(response_body)
-	print("second")
 	
 	-- start updating
 	

@@ -12,7 +12,7 @@
 #include <boost/regex.hpp>
 #include <boost/format.hpp>
 
-#include <luabind/luabind.hpp>
+//#include <luabind/luabind.hpp>
 #include <utf8.h>
 
 namespace Gplusnasite
@@ -114,6 +114,7 @@ HttpResponse Connection::httpGet(const string& url, bool auto_redirect)
 	do 
 	{
 		WebClient client(location);
+		connectEventHandler(client);
 		client.setUserAgent(user_agent_);
 		client.setCurrentMailAddress(current_mail_address_);
 		client.setCurrentAccountID(current_account_id_);
@@ -158,6 +159,7 @@ HttpResponse Connection::httpPost(const string& url, const map<string, string>& 
 HttpResponse Connection::httpPost(const string& url, const string& parameter)
 {
 	WebClient client(url);
+	connectEventHandler(client);
 	client.setUserAgent(user_agent_);
 	client.setCurrentMailAddress(current_mail_address_);
 	client.setCurrentAccountID(current_account_id_);
@@ -173,6 +175,7 @@ HttpResponse Connection::httpPost(const string& url, const string& parameter)
 HttpResponse Connection::httpPut(const string& url, ifstream& file_stream)
 {
 	WebClient client(url);
+	connectEventHandler(client);
 	client.setUserAgent(user_agent_);
 	client.setCurrentMailAddress(current_mail_address_);
 	client.setCurrentAccountID(current_account_id_);
@@ -268,9 +271,16 @@ void Connection::bindToScript(lua_State* lua_state)
 		];
 }
 
+void Connection::connectEventHandler(WebClient& client)
+{
+	client.onChunkedContentReceived.connect([&](const std::string& content)
+	{
+		onChunkedContentReceived(content);
+	});
+}
+
 Connection::~Connection()
 {
-
 }
 
 }// namespace GooglePlusLibrary

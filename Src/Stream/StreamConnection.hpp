@@ -111,18 +111,6 @@ private:
 public:
 	/*!
 	* @~english
-	* @brief sleeps only the specified time(in milliseconds)
-	* @details This function is used in the Lua script
-	* @param milliseconds Script sleep time you want(in milliseconds)
-	* @~japanese
-	* @brief 指定した時間(ミリ秒)だけスリープします
-	* @details この関数はLuaスクリプト内で使われるものです
-	* @param milliseconds スクリプトをスリープしたい時間(ミリ秒)
-	*/
-	void scriptSleep(long milliseconds);
-
-	/*!
-	* @~english
 	* @brief Abort the update stream
 	* @details Blocking of the Update () will be released in good time this function is called
 	* @warning This function is implemented please do not use full for outstanding

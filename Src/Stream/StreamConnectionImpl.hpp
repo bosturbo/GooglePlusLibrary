@@ -36,13 +36,10 @@ public:
 	StreamConnectionImpl();
 
 	void initialize(const std::wstring& account_id);
-
 	void initializeAsync(const std::wstring& account_id);
-
 	void waitInitializeAsync();
 
 private:
-
 	void initializeAsyncThreadMethod(const std::wstring& account_id);
 	boost::thread initialize_thread_;
 
@@ -50,16 +47,17 @@ public:
 	boost::signals2::signal<void()> onInitializeSucceed;
 	boost::signals2::signal<void()> onInitializeFailed;
 
-public:
+	void test();
 
+public:
 	void update(const std::wstring& account_id);
+protected:
+	static void chunkedContentReceieved(const std::string& account_id, const std::string& content);
+	
 private:
 	boost::thread update_thread_;
 
 public:
-	
-	void scriptSleep(long milliseconds);
-
 	void cancelUpdate();
 	
 	bool isCanceled();

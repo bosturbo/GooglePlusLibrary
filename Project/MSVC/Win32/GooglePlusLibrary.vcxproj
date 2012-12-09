@@ -176,6 +176,7 @@
     <ClCompile Include="..\..\..\Src\Stream\StreamConnectionImpl.cpp" />
     <ClCompile Include="..\..\..\Src\Stream\StreamConnectionImplLua.cpp" />
     <ClCompile Include="..\..\..\Src\Stream\StreamImpl.cpp" />
+    <ClCompile Include="..\..\..\Src\Stream\StreamObserver.cpp" />
     <ClCompile Include="..\..\..\Src\Thread\ReadWriteMutex.cpp" />
     <ClCompile Include="..\..\..\Src\Utility\Utility.cpp" />
     <ClCompile Include="..\..\..\Src\Utility\UtilityImpl.cpp" />
@@ -274,6 +275,7 @@
     <ClInclude Include="..\..\..\Src\Stream\Post\PostSetter.hpp" />
     <ClInclude Include="..\..\..\Src\Stream\StreamConnection.hpp" />
     <ClInclude Include="..\..\..\Src\Stream\StreamConnectionImpl.hpp" />
+    <ClInclude Include="..\..\..\Src\Stream\StreamObserver.hpp" />
     <ClInclude Include="..\..\..\Src\Utility\LuaData.hpp" />
     <ClInclude Include="..\..\..\Src\Utility\LuaScript.hpp" />
     <ClInclude Include="..\..\..\Src\Utility\Utility.hpp" />
